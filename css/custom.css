@@ -1901,7 +1901,7 @@ html.dark #site-header[class*="bg-cream"] .nav-link:hover {
   font-weight: 300;
   color: rgba(245, 239, 230, 0.22);
   letter-spacing: 1px;
-  transition: color 0.35s ease, text-shadow 0.35s ease;
+  transition: color 0.35s ease, text-shadow 0.35s ease, transform 0.35s ease;
   cursor: default;
 }
 
@@ -1910,24 +1910,81 @@ html.dark #site-header[class*="bg-cream"] .nav-link:hover {
   text-shadow: 0 0 24px rgba(201, 169, 110, 0.25);
 }
 
-/* ── Gold featured city ── */
-.branch-name--featured {
+/* ── LEVEL 1: Active States (Lagos & Abuja) — HIGHEST PRIORITY ── */
+.branch-name--state {
   color: #C9A96E;
   font-weight: 400;
+  font-style: italic;
+  font-size: clamp(26px, 3.5vw, 44px);
+  opacity: 1;
 }
 
-.branch-name--featured:hover {
+.branch-name--state:hover {
   color: #dcbe86;
   text-shadow: 0 0 30px rgba(201, 169, 110, 0.4);
+  transform: scale(1.05);
 }
 
-/* ── Diamond separator ── */
+/* ── LEVEL 2: Branch Locations (VI, Lekki, Wuse 2) — MEDIUM PRIORITY ── */
+.branch-name--location {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(12px, 1.8vw, 16px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #6B3F5E;
+  background: rgba(107, 63, 94, 0.08);
+  border: 1px solid rgba(107, 63, 94, 0.15);
+  padding: 6px 14px;
+  border-radius: 100px;
+  opacity: 1;
+}
+
+.dark .branch-name--location {
+  color: #D4A5A5;
+  background: rgba(212, 165, 165, 0.08);
+  border-color: rgba(212, 165, 165, 0.15);
+}
+
+.branch-name--location:hover {
+  color: #5a3450;
+  background: rgba(107, 63, 94, 0.12);
+  border-color: rgba(107, 63, 94, 0.25);
+  text-shadow: none;
+  transform: translateY(-2px);
+}
+
+.dark .branch-name--location:hover {
+  color: #e5bebe;
+  background: rgba(212, 165, 165, 0.12);
+  border-color: rgba(212, 165, 165, 0.25);
+}
+
+/* ── LEVEL 3: Context States (Rivers, Oyo, Kano, Anambra) — LOWEST PRIORITY ── */
+.branch-name--muted {
+  font-style: italic;
+  font-size: clamp(18px, 2.5vw, 32px);
+  color: rgba(245, 239, 230, 0.12);
+  opacity: 0.5;
+  font-weight: 300;
+}
+
+.dark .branch-name--muted {
+  color: rgba(245, 239, 230, 0.08);
+}
+
+.branch-name--muted:hover {
+  color: rgba(245, 239, 230, 0.18);
+  text-shadow: none;
+}
+
+/* ── Diamond separator (now a dot) ── */
 .branch-sep {
-  width: 6px;
-  height: 6px;
-  transform: rotate(45deg);
-  background: rgba(201, 169, 110, 0.25);
-  border-radius: 1px;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(201, 169, 110, 0.3);
+  transform: none;
   flex-shrink: 0;
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
