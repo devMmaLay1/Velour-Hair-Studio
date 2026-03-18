@@ -21,6 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
         initNavbarScroll();
         setActiveNavLink();
         injectBreadcrumb();
+        // Initialize cart after navbar is loaded (cart elements are in navbar)
+        if (typeof initGlobalCart === 'function') {
+          initGlobalCart();
+        }
       })
       .catch((err) => console.error("Error loading navbar:", err));
   }
@@ -41,36 +45,13 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 /* ───────────────────────────────────────────
-   Dark Mode Toggle
+   Dark Mode (Always On)
    ─────────────────────────────────────────── */
 function initDarkModeToggle() {
   const html = document.documentElement;
-
-  // Apply saved theme on load
-  const stored = localStorage.getItem("velour-theme");
-  if (stored === "dark") {
-    html.classList.add("dark");
-  } else if (stored === "light") {
-    html.classList.remove("dark");
-  }
-
-  // Desktop toggle
-  const toggle = document.querySelector("[data-theme-toggle]");
-  if (toggle) {
-    toggle.addEventListener("click", () => {
-      const isDark = html.classList.toggle("dark");
-      localStorage.setItem("velour-theme", isDark ? "dark" : "light");
-    });
-  }
-
-  // Mobile toggle
-  const mobileToggle = document.querySelector("[data-theme-toggle-mobile]");
-  if (mobileToggle) {
-    mobileToggle.addEventListener("click", () => {
-      const isDark = html.classList.toggle("dark");
-      localStorage.setItem("velour-theme", isDark ? "dark" : "light");
-    });
-  }
+  
+  // Force dark mode always
+  html.classList.add("dark");
 }
 
 /* ───────────────────────────────────────────

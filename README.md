@@ -4,7 +4,7 @@
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.0-38bdf8.svg)
 ![License](https://img.shields.io/badge/license-MIT-plum.svg)
 
-A meticulously crafted, production-ready website for premium hair salons and beauty studios. Built with modern web technologies, featuring a sophisticated dark/light mode system, complete booking flow, and elegant animations.
+A meticulously crafted, production-ready website for premium hair salons and beauty studios. Built with modern web technologies, featuring an elegant dark mode design, complete booking flow, and premium animations.
 
 ---
 
@@ -12,7 +12,7 @@ A meticulously crafted, production-ready website for premium hair salons and bea
 
 ### Core Functionality
 - **14 fully-functional pages** with semantic HTML5
-- **Dark/light mode** with localStorage persistence
+- **Dark mode design** with elegant color scheme
 - **6-step booking system** with service selection, stylist matching, and datetime picker
 - **Component-based architecture** with dynamic navbar and footer loading
 - **Responsive design** optimized for mobile, tablet, and desktop
@@ -102,15 +102,13 @@ Fonts are loaded via Google Fonts CDN in `index.html`.
 
 ### Dark Mode
 
-The site supports system preference detection and manual toggle:
+The site uses a permanent dark mode design for a premium, sophisticated aesthetic. The dark theme is applied by default with the `dark` class on the `<html>` element and uses Tailwind's `dark:` variant system for styling.
 
-```javascript
-// Stored in localStorage as 'velour-theme'
-// Values: 'light' | 'dark'
-// Toggle buttons: [data-theme-toggle] (desktop), [data-theme-toggle-mobile] (mobile)
-```
-
-Dark mode is implemented using Tailwind's `dark:` variant and the `class` strategy.
+**Color scheme:**
+- Background: `#0D0A0E` (dark-bg)
+- Surface: `#1A1220` (dark-surface)
+- Text: `#F5EFE6` (cream)
+- Accents: `#C9A96E` (gold), `#D4A5A5` (rose)
 
 ---
 
@@ -128,7 +126,7 @@ velour-hair-studio/
 │   ├── icons/                 # SVG icons
 │   └── fonts/                 # Custom fonts (if any)
 ├── components/
-│   ├── navbar.html            # Site header with dark mode toggle
+│   ├── navbar.html            # Site header with navigation
 │   ├── footer.html            # Site footer with newsletter signup
 │   ├── booking-modal.html     # Booking confirmation modal
 │   ├── cookie-banner.html     # GDPR cookie consent
@@ -150,7 +148,7 @@ velour-hair-studio/
 │   ├── shop.css               # Shop grid (coming soon)
 │   └── team.css               # Team member cards
 ├── js/
-│   ├── main.js                # Core: component loader, dark mode, mobile menu
+│   ├── main.js                # Core: component loader, mobile menu, scroll effects
 │   ├── animations.js          # GSAP and AOS scroll animations
 │   ├── booking.js             # 6-step booking flow with validation
 │   ├── gallery.js             # Gallery filtering and lightbox
@@ -503,7 +501,6 @@ The template is fully responsive with mobile-first breakpoints:
 
 The mobile menu is a slide-in drawer with:
 - Smooth transitions
-- Dark mode toggle
 - Active link highlighting
 - Close on outside click
 
@@ -512,8 +509,6 @@ Managed by `initMobileMenu()` in `js/main.js`.
 ---
 
 ## 🔌 Integrations
-
-### Formspree (Contact Form)
 
 The contact form uses Formspree for submissions. To set up:
 
@@ -648,20 +643,6 @@ fetch("/components/navbar.html")
 
 This allows you to edit the navbar/footer once and have changes reflect across all pages.
 
-### Dark Mode Testing
-
-Toggle dark mode programmatically in the console:
-
-```javascript
-// Enable dark mode
-document.documentElement.classList.add('dark');
-localStorage.setItem('velour-theme', 'dark');
-
-// Disable dark mode
-document.documentElement.classList.remove('dark');
-localStorage.setItem('velour-theme', 'light');
-```
-
 ### Tailwind Purging
 
 Tailwind automatically purges unused CSS in production. Ensure all class names are complete strings (not dynamically generated) to avoid purging issues:
@@ -703,11 +684,11 @@ For questions, issues, or feature requests:
 ## 🎉 Credits
 
 - **Design**: Velour Hair Studio
-- **Development**: [Axhigbue Emmanuel]
+- **Development**: [Achigbue Emmanuel]
 - **Fonts**: Google Fonts (Fraunces, Outfit)
 - **Icons**: Custom SVG icons
 - **Animations**: GSAP, AOS
-- **Images**: Placeholder images (replace with your own)
+- **Images**: Google Flow 
 
 ---
 

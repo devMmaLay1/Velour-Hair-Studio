@@ -183,8 +183,13 @@ function showCartToast(msg) {
   }, 2400);
 }
 
-/* ── Bootstrap — self-initializes on DOMContentLoaded ── */
+/* ── Bootstrap — can be called manually or auto-initializes ── */
+let cartInitialized = false;
+
 function initGlobalCart() {
+  // Prevent double initialization
+  if (cartInitialized) return;
+  
   // Early exit on locked/coming-soon pages — prevent all cart initialization
   if (document.body.dataset.lockedPage === 'true' || document.querySelector('.cs-overlay')) {
     return;
@@ -193,14 +198,39 @@ function initGlobalCart() {
   loadCart();
   updateCartBadge();
 
-  const fab      = document.getElementById('sp-cart-fab');
-  const overlay  = document.getElementById('sp-cart-overlay');
-  const closeBtn = document.getElementById('sp-cart-close');
-
-  if (fab)      fab.addEventListener('click', openCart);
-  if (overlay)  overlay.addEventListener('click', closeCart);
-  if (closeBtn) closeBtn.addEventListener('click', closeCart);
-  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeCart(); });
+  // Use event delegation on document to handle clicks even if elements load later
+  document.addEventListener('click', (e) => {
+    // Cart FAB click
+    if (e.target.closest('#sp-cart-fab')) {
+      e.preventDefault();
+      openCart();
+    }
+    // Close button click
+    if (e.target.closest('#sp-cart-close')) {
+      e.preventDefault();
+      closeCart();
+    }
+    // Overlay click
+    if (e.target.id === 'sp-cart-overlay') {
+      closeCart();
+    }
+  });
+  
+  // Escape key to close
+  document.addEventListener('keydown', e => { 
+    if (e.key === 'Escape') closeCart(); 
+  });
+  
+  cartInitialized = true;
 }
 
-document.addEventListener('DOMContentLoaded', initGlobalCart);
+// Auto-initialize on DOMContentLoaded as fallback
+// (main.js will also call this after navbar loads, but cartInitialized flag prevents double init)
+document.addEventListener('DOMContentLoaded', () => {
+  // Wait a bit for navbar to load, then initialize if not already done
+  setTimeout(() => {
+    if (!cartInitialized) {
+      initGlobalCart();
+    }
+  }, 100);
+});

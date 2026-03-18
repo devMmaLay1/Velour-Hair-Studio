@@ -193,8 +193,23 @@
 }
 .dark .cr-position-body { color: rgba(245,239,230,0.65); }
 .cr-position.is-open .cr-position-body {
-  max-height: 800px; padding: 24px 28px 28px;
+  max-height: 1200px; padding: 24px 28px 28px;
   border-top-width: 1px;
+  overflow-y: auto;
+}
+/* Mobile: make dropdown scrollable if content is too long */
+@media (max-width: 640px) {
+  .cr-position.is-open .cr-position-body {
+    max-height: 70vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .cr-position-body {
+    padding: 0 20px;
+  }
+  .cr-position.is-open .cr-position-body {
+    padding: 20px;
+  }
 }
 .cr-position-body h4 {
   font-family: 'Fraunces', serif; font-size: 0.95rem; font-weight: 400;
