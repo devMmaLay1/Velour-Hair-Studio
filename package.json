@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "Velour Hair Studio website - premium multi-page salon experience built with HTML, Tailwind CSS, and vanilla JavaScript.",
   "scripts": {
-    "build": "tailwindcss -i css/input.css -o css/output.css --watch",
+    "dev": "tailwindcss -i css/input.css -o css/output.css --watch",
+    "build": "tailwindcss -i css/input.css -o css/output.css --minify",
     "serve": "npx serve . -p 3000"
   },
   "devDependencies": {
