@@ -695,7 +695,7 @@ This project is licensed under the MIT License. You are free to use, modify, and
 For questions, issues, or feature requests:
 
 - Open an issue on GitHub
-- Email: support@velour.studio (example)
+- Email: devMmalay@gmail.com
 - Documentation: This README
 
 ---
@@ -703,7 +703,7 @@ For questions, issues, or feature requests:
 ## 🎉 Credits
 
 - **Design**: Velour Hair Studio
-- **Development**: [Your Name/Agency]
+- **Development**: [Axhigbue Emmanuel]
 - **Fonts**: Google Fonts (Fraunces, Outfit)
 - **Icons**: Custom SVG icons
 - **Animations**: GSAP, AOS
