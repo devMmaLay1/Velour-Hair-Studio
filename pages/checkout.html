@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — Velour Hair Studio</title>
+  <meta name="description" content="Complete your order at Velour Hair Studio." />
+  <link rel="stylesheet" href="/css/output.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="/css/checkout.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <script src="https://js.paystack.co/v1/inline.js"></script>
+</head>
+<body class="min-h-screen bg-cream dark:bg-dark-bg text-ink dark:text-cream antialiased font-outfit light-hero-page">
+
+  <!-- ── Minimal header ── -->
+  <header class="ck-header">
+    <div class="ck-header-inner">
+      <a href="/index.html" class="ck-logo" aria-label="Velour Hair Studio — back to home">
+        <span class="ck-logo-word">Velour</span>
+        <span class="ck-logo-sub">Hair Studio</span>
+      </a>
+      <div class="ck-header-right">
+        <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2L3 4.5v4C3 11.5 5.5 14 8 15c2.5-1 5-3.5 5-6.5v-4L8 2z"/></svg>
+        <span>Secure Checkout</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="ck-main">
+    <div class="ck-wrap">
+
+      <!-- LEFT: Steps -->
+      <div class="ck-steps-col">
+
+        <!-- Mobile summary accordion -->
+        <div class="ck-mobile-summary" id="ck-mobile-summary">
+          <button class="ck-mobile-summary-trigger" id="ck-mobile-summary-trigger" aria-expanded="false" aria-controls="ck-mobile-summary-body">
+            <div class="ck-mobile-summary-left">
+              <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 2L3 5v8a1 1 0 001 1h8a1 1 0 001-1V5l-2-3z"/><line x1="3" y1="5" x2="13" y2="5"/><path d="M10 8a2 2 0 01-4 0"/></svg>
+              <span>Order summary</span>
+              <svg class="ck-mobile-chevron" viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+            </div>
+            <strong class="ck-mobile-total" id="ck-mobile-total">₦0</strong>
+          </button>
+          <div class="ck-mobile-summary-body" id="ck-mobile-summary-body" hidden>
+            <div id="ck-mobile-items"></div>
+          </div>
+        </div>
+
+        <!-- Progress bar -->
+        <div class="ck-progress" role="list" aria-label="Checkout steps">
+          <div class="ck-progress-step is-active" id="ck-prog-1" role="listitem" aria-current="step">
+            <span class="ck-prog-num">1</span>
+            <span class="ck-prog-label">Contact</span>
+          </div>
+          <div class="ck-progress-line" id="ck-prog-line-1"></div>
+          <div class="ck-progress-step" id="ck-prog-2" role="listitem">
+            <span class="ck-prog-num">2</span>
+            <span class="ck-prog-label">Delivery</span>
+          </div>
+          <div class="ck-progress-line" id="ck-prog-line-2"></div>
+          <div class="ck-progress-step" id="ck-prog-3" role="listitem">
+            <span class="ck-prog-num">3</span>
+            <span class="ck-prog-label">Payment</span>
+          </div>
+        </div>
+
+        <!-- ── Step 1: Contact ── -->
+        <div class="ck-step-card is-open" id="ck-step-1" data-step="1">
+          <div class="ck-step-header">
+            <div class="ck-step-title-row">
+              <span class="ck-step-num">1</span>
+              <h2 class="ck-step-title">Contact Information</h2>
+            </div>
+            <div class="ck-step-summary" id="ck-step-1-summary" hidden></div>
+          </div>
+          <div class="ck-step-body" id="ck-step-1-body">
+            <div class="ck-field-row">
+              <div class="ck-field">
+                <label for="ck-name" class="ck-label">Full Name <span aria-hidden="true">*</span></label>
+                <input type="text" id="ck-name" name="name" class="ck-input" placeholder="e.g. Amara Okafor" required autocomplete="name" />
+                <span class="ck-field-error" id="ck-name-err" role="alert"></span>
+              </div>
+              <div class="ck-field">
+                <label for="ck-email" class="ck-label">Email Address <span aria-hidden="true">*</span></label>
+                <input type="email" id="ck-email" name="email" class="ck-input" placeholder="you@example.com" required autocomplete="email" />
+                <span class="ck-field-error" id="ck-email-err" role="alert"></span>
+              </div>
+            </div>
+            <div class="ck-field">
+              <label for="ck-phone" class="ck-label">Phone Number <span aria-hidden="true">*</span></label>
+              <input type="tel" id="ck-phone" name="phone" class="ck-input" placeholder="+234 800 000 0000" required autocomplete="tel" />
+              <span class="ck-field-error" id="ck-phone-err" role="alert"></span>
+            </div>
+            <button class="ck-next-btn" id="ck-next-1">
+              Continue to Delivery
+              <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- ── Step 2: Delivery ── -->
+        <div class="ck-step-card" id="ck-step-2" data-step="2">
+          <div class="ck-step-header">
+            <div class="ck-step-title-row">
+              <span class="ck-step-num">2</span>
+              <h2 class="ck-step-title">Delivery Details</h2>
+            </div>
+            <div class="ck-step-summary" id="ck-step-2-summary" hidden></div>
+          </div>
+          <div class="ck-step-body" id="ck-step-2-body" hidden>
+            <div class="ck-field">
+              <label for="ck-addr1" class="ck-label">Address Line 1 <span aria-hidden="true">*</span></label>
+              <input type="text" id="ck-addr1" name="address1" class="ck-input" placeholder="House number and street name" required autocomplete="address-line1" />
+              <span class="ck-field-error" id="ck-addr1-err" role="alert"></span>
+            </div>
+            <div class="ck-field">
+              <label for="ck-addr2" class="ck-label">Address Line 2 <span class="ck-optional">(optional)</span></label>
+              <input type="text" id="ck-addr2" name="address2" class="ck-input" placeholder="Apartment, suite, estate, etc." autocomplete="address-line2" />
+            </div>
+            <div class="ck-field-row">
+              <div class="ck-field">
+                <label for="ck-city" class="ck-label">City <span aria-hidden="true">*</span></label>
+                <input type="text" id="ck-city" name="city" class="ck-input" placeholder="e.g. Lagos" required autocomplete="address-level2" />
+                <span class="ck-field-error" id="ck-city-err" role="alert"></span>
+              </div>
+              <div class="ck-field">
+                <label for="ck-state" class="ck-label">State <span aria-hidden="true">*</span></label>
+                <div class="ck-select-wrap">
+                  <select id="ck-state" name="state" class="ck-select" required>
+                    <option value="" disabled selected>Select state…</option>
+                    <option>Abia</option><option>Adamawa</option><option>Akwa Ibom</option>
+                    <option>Anambra</option><option>Bauchi</option><option>Bayelsa</option>
+                    <option>Benue</option><option>Borno</option><option>Cross River</option>
+                    <option>Delta</option><option>Ebonyi</option><option>Edo</option>
+                    <option>Ekiti</option><option>Enugu</option><option>FCT — Abuja</option>
+                    <option>Gombe</option><option>Imo</option><option>Jigawa</option>
+                    <option>Kaduna</option><option>Kano</option><option>Katsina</option>
+                    <option>Kebbi</option><option>Kogi</option><option>Kwara</option>
+                    <option>Lagos</option><option>Nasarawa</option><option>Niger</option>
+                    <option>Ogun</option><option>Ondo</option><option>Osun</option>
+                    <option>Oyo</option><option>Plateau</option><option>Rivers</option>
+                    <option>Sokoto</option><option>Taraba</option><option>Yobe</option>
+                    <option>Zamfara</option>
+                  </select>
+                  <svg class="ck-select-arrow" viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
+                </div>
+                <span class="ck-field-error" id="ck-state-err" role="alert"></span>
+              </div>
+            </div>
+
+            <!-- Delivery method -->
+            <div class="ck-field" style="margin-top:8px">
+              <label class="ck-label">Delivery Method <span aria-hidden="true">*</span></label>
+              <div class="ck-delivery-cards" role="group" aria-label="Select delivery method">
+                <label class="ck-delivery-card" id="ck-del-std-label">
+                  <input type="radio" name="ck-delivery" value="standard" checked />
+                  <div class="ck-delivery-card-body">
+                    <div class="ck-delivery-card-top">
+                      <span class="ck-delivery-card-name">Standard Delivery</span>
+                      <span class="ck-delivery-card-price" id="ck-std-price">₦2,500</span>
+                    </div>
+                    <span class="ck-delivery-card-sub">2–4 business days</span>
+                  </div>
+                  <span class="ck-delivery-card-check" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg>
+                  </span>
+                </label>
+                <label class="ck-delivery-card" id="ck-del-exp-label">
+                  <input type="radio" name="ck-delivery" value="express" />
+                  <div class="ck-delivery-card-body">
+                    <div class="ck-delivery-card-top">
+                      <span class="ck-delivery-card-name">Express Delivery</span>
+                      <span class="ck-delivery-card-price">₦4,500</span>
+                    </div>
+                    <span class="ck-delivery-card-sub">Next business day</span>
+                  </div>
+                  <span class="ck-delivery-card-check" aria-hidden="true">
+                    <svg viewBox="0 0 12 12" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6l3 3 5-5"/></svg>
+                  </span>
+                </label>
+              </div>
+            </div>
+
+            <div class="ck-step-actions">
+              <button class="ck-back-btn" id="ck-back-2">
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+                Back
+              </button>
+              <button class="ck-next-btn" id="ck-next-2">
+                Continue to Payment
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── Step 3: Payment ── -->
+        <div class="ck-step-card" id="ck-step-3" data-step="3">
+          <div class="ck-step-header">
+            <div class="ck-step-title-row">
+              <span class="ck-step-num">3</span>
+              <h2 class="ck-step-title">Payment</h2>
+            </div>
+          </div>
+          <div class="ck-step-body" id="ck-step-3-body" hidden>
+
+            <!-- Read-only order review -->
+            <div class="ck-order-review" id="ck-order-review"></div>
+
+            <!-- Payment cancelled message -->
+            <div class="ck-payment-cancelled" id="ck-payment-cancelled" hidden>
+              <svg viewBox="0 0 20 20" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="8"/><path d="M10 6v4M10 13.5v.5"/></svg>
+              Payment was cancelled. You can try again below.
+            </div>
+
+            <div class="ck-step-actions">
+              <button class="ck-back-btn" id="ck-back-3">
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4l-4 4 4 4"/></svg>
+                Back
+              </button>
+              <button class="ck-pay-btn" id="ck-pay-btn">
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2L3 4.5v4C3 11.5 5.5 14 8 15c2.5-1 5-3.5 5-6.5v-4L8 2z"/></svg>
+                Pay Now
+                <span class="ck-pay-total" id="ck-pay-total-label"></span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /ck-steps-col -->
+
+      <!-- RIGHT: Sticky order summary -->
+      <aside class="ck-summary-col" aria-label="Order summary">
+        <div class="ck-summary-card" id="ck-summary-card">
+          <p class="ck-summary-title">Order Summary</p>
+          <div class="ck-summary-items" id="ck-summary-items"></div>
+          <div class="ck-summary-sep"></div>
+          <div class="ck-summary-lines" id="ck-summary-lines"></div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <!-- ── Minimal footer ── -->
+  <footer class="ck-footer">
+    <div class="ck-footer-inner">
+      <div class="ck-footer-ssl">
+        <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2L3 4.5v4C3 11.5 5.5 14 8 15c2.5-1 5-3.5 5-6.5v-4L8 2z"/></svg>
+        <span>256-bit SSL encryption</span>
+      </div>
+      <div class="ck-footer-payments" aria-label="Accepted payment methods">
+        <span class="ck-pay-badge">Paystack</span>
+        <span class="ck-pay-badge">Visa</span>
+        <span class="ck-pay-badge">Mastercard</span>
+        <span class="ck-pay-badge">Verve</span>
+        <span class="ck-pay-badge">Bank Transfer</span>
+      </div>
+      <p class="ck-footer-copy">© 2026 Velour Hair Studio</p>
+    </div>
+  </footer>
+
+  <script src="/js/products-data.js" defer></script>
+  <script src="/js/cart.js" defer></script>
+  <script src="/js/checkout.js" defer></script>
+  <script src="/js/coming-soon.js" data-page="checkout" defer></script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery — Velour Hair Studio</title>
+  <meta name="description" content="Browse our portfolio of braids, locs, colour, silk press, and styling work at Velour Hair Studio Lagos." />
+  <link rel="stylesheet" href="/css/output.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="/css/gallery.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-cream dark:bg-dark-bg text-ink dark:text-cream antialiased font-outfit light-hero-page">
+  <div id="navbar-placeholder"></div>
+  <main>
+
+    <!-- Hero -->
+    <section class="gal-hero">
+      <div class="gal-hero-blob gal-hero-blob--a" aria-hidden="true"></div>
+      <div class="gal-hero-blob gal-hero-blob--b" aria-hidden="true"></div>
+      <div class="gal-hero-line gal-hero-line--top"    aria-hidden="true"></div>
+      <div class="gal-hero-line gal-hero-line--bottom" aria-hidden="true"></div>
+      <div class="gal-hero-content">
+        <p class="gal-hero-eyebrow">Our Work</p>
+        <h1 class="gal-hero-heading">Finished looks,<br><em>framed like editorials.</em></h1>
+        <p class="gal-hero-sub">Every image is a real client, a real result. Browse our portfolio of braids, colour, silk press, locs, and treatments.</p>
+      </div>
+    </section>
+
+    <!-- Filter + Masonry -->
+    <section class="gal-section">
+      <div class="gal-wrap">
+
+        <!-- Filters -->
+        <div class="gal-filter-bar">
+          <div class="gal-filters" role="tablist" aria-label="Gallery categories">
+            <button class="gal-filter active" data-filter="all"       role="tab" aria-selected="true">All</button>
+            <button class="gal-filter"         data-filter="braids"   role="tab" aria-selected="false">Braids</button>
+            <button class="gal-filter"         data-filter="colour"   role="tab" aria-selected="false">Colour</button>
+            <button class="gal-filter"         data-filter="silk-press" role="tab" aria-selected="false">Silk Press</button>
+            <button class="gal-filter"         data-filter="locs"     role="tab" aria-selected="false">Locs</button>
+            <button class="gal-filter"         data-filter="treatments" role="tab" aria-selected="false">Treatments</button>
+          </div>
+          <p class="gal-count" id="gal-count"></p>
+        </div>
+
+        <!-- Masonry grid (CSS columns) -->
+        <div class="gal-masonry" id="gal-masonry">
+
+          <figure class="gal-item" data-category="braids">
+            <img src="../assets/images/Gallery/Braids 1 — Knotless Box Braids.webp" alt="Knotless Box Braids" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Braids</span><p class="gal-label">Knotless Box Braids</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="colour">
+            <img src="../assets/images/Gallery/Colour 1 — Balayage Finish.webp" alt="Balayage Finish" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Colour</span><p class="gal-label">Balayage Finish</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="silk-press">
+            <img src="../assets/images/Gallery/Silk Press 1 — Glossy Silk Press.webp" alt="Glossy Silk Press" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Silk Press</span><p class="gal-label">Glossy Silk Press</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="braids">
+            <img src="../assets/images/Gallery/Braids 2 — Fulani Braids With Beads.webp" alt="Fulani Braids With Beads" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Braids</span><p class="gal-label">Fulani Braids</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="locs">
+            <img src="../assets/images/Gallery/Locs 1 — Loc Retwist.webp" alt="Loc Retwist" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Locs</span><p class="gal-label">Loc Retwist</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="colour">
+            <img src="../assets/images/Gallery/Colour 2 — Full Colour.webp" alt="Full Colour" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Colour</span><p class="gal-label">Full Colour</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="silk-press">
+            <img src="../assets/images/Gallery/Silk Press 2 — Blow Dry and Style.webp" alt="Blow Dry and Style" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Silk Press</span><p class="gal-label">Blow Dry &amp; Style</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="braids">
+            <img src="../assets/images/Gallery/Braids 3 — Goddess Braids.webp" alt="Goddess Braids" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Braids</span><p class="gal-label">Goddess Braids</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="treatments">
+            <img src="../assets/images/Gallery/Treatments 1 — Deep Conditioning.webp" alt="Deep Conditioning" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Treatments</span><p class="gal-label">Deep Conditioning</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="locs">
+            <img src="../assets/images/Gallery/Locs 2 — Starter Locs.webp" alt="Starter Locs" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Locs</span><p class="gal-label">Starter Locs</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="colour">
+            <img src="../assets/images/Gallery/Colour 3 — Highlights and Lowlights.webp" alt="Highlights and Lowlights" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Colour</span><p class="gal-label">Highlights &amp; Lowlights</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="treatments">
+            <img src="../assets/images/Gallery/Treatments 2 — Keratin Treatment.webp" alt="Keratin Treatment" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Treatments</span><p class="gal-label">Keratin Treatment</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="braids">
+            <img src="../assets/images/Gallery/Braids 4 — Cornrow Pattern.webp" alt="Cornrow Pattern" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Braids</span><p class="gal-label">Cornrow Pattern</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="silk-press">
+            <img src="../assets/images/Gallery/Silk Press 3 — Volume Blowout.webp" alt="Volume Blowout" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Silk Press</span><p class="gal-label">Volume Blowout</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="locs">
+            <img src="../assets/images/Gallery/Locs 3 — Loc Updo.webp" alt="Loc Updo" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Locs</span><p class="gal-label">Loc Updo</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+          <figure class="gal-item" data-category="treatments">
+            <img src="../assets/images/Gallery/Treatments 3 — Olaplex Bond Repair.webp" alt="Olaplex Bond Repair" loading="lazy" />
+            <div class="gal-overlay">
+              <div class="gal-info"><span class="gal-tag">Treatments</span><p class="gal-label">Olaplex Bond Repair</p></div>
+              <button class="gal-zoom" aria-label="View full size"><svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2h4v4M6 14H2v-4M14 2l-5 5M2 14l5-5"/></svg></button>
+            </div>
+          </figure>
+
+        </div><!-- /gal-masonry -->
+
+        <!-- Empty state -->
+        <div class="gal-empty" id="gal-empty" style="display:none">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="6" width="36" height="36" rx="4"/><circle cx="17" cy="19" r="4"/><path d="M6 34l10-10 6 6 6-8 14 12"/></svg>
+          <p>No photos in this category yet.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="gal-lightbox" id="gal-lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" style="display:none">
+      <div class="gal-lightbox-backdrop" id="gal-lb-backdrop"></div>
+      <div class="gal-lightbox-inner">
+        <button class="gal-lb-close" id="gal-lb-close" aria-label="Close">
+          <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 2l12 12M14 2L2 14"/></svg>
+        </button>
+        <button class="gal-lb-nav gal-lb-prev" id="gal-lb-prev" aria-label="Previous image">
+          <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4L6 8l4 4"/></svg>
+        </button>
+        <div class="gal-lb-img-wrap">
+          <img src="" alt="" class="gal-lb-img" id="gal-lb-img" />
+        </div>
+        <button class="gal-lb-nav gal-lb-next" id="gal-lb-next" aria-label="Next image">
+          <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 4l4 4-4 4"/></svg>
+        </button>
+        <div class="gal-lb-caption">
+          <span class="gal-lb-tag" id="gal-lb-tag"></span>
+          <p class="gal-lb-label" id="gal-lb-label"></p>
+          <span class="gal-lb-counter" id="gal-lb-counter"></span>
+        </div>
+      </div>
+    </div>
+
+  </main>
+  <div id="footer-placeholder"></div>
+  <script src="/js/products-data.js" defer></script>
+  <script src="/js/cart.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/gallery.js" defer></script>
+
+  <!-- Global Cart -->
+  <div class="sp-cart-overlay" id="sp-cart-overlay"></div>
+  <aside class="sp-cart" id="sp-cart" hidden>
+    <div class="sp-cart-header">
+      <div class="sp-cart-header-left">
+        <p class="sp-cart-eyebrow">Velour Studio</p>
+        <h2 class="sp-cart-title">Your Cart</h2>
+      </div>
+      <button class="sp-cart-close" id="sp-cart-close" aria-label="Close cart">
+        <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+      </button>
+    </div>
+    <div class="sp-cart-body" id="sp-cart-body"></div>
+    <div class="sp-cart-footer" id="sp-cart-footer"></div>
+  </aside>
+  <button class="sp-cart-fab" id="sp-cart-fab" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="sp-cart-fab-badge" id="sp-cart-badge" hidden>0</span>
+  </button>
+  <div class="sp-toast" id="sp-toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

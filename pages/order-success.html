@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Order Confirmed — Velour Hair Studio</title>
+  <meta name="description" content="Your order has been confirmed. Thank you for shopping with Velour Hair Studio." />
+  <link rel="stylesheet" href="/css/output.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    body { background: #0D0A0E; color: #F5EFE6; min-height: 100vh; display: flex; flex-direction: column; }
+    .os-header {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(13,10,14,0.92); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(201,169,110,0.1);
+    }
+    .os-header-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      height: 64px; display: flex; align-items: center; justify-content: center;
+    }
+    .os-logo { display: flex; flex-direction: column; gap: 1px; text-decoration: none; align-items: center; }
+    .os-logo-word { font-family: 'Fraunces', serif; font-size: 1.35rem; font-weight: 300; color: #F5EFE6; line-height: 1; }
+    .os-logo-sub { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(245,239,230,0.4); }
+
+    .os-main { flex: 1; display: flex; align-items: center; justify-content: center; padding: 60px 24px; }
+    .os-card {
+      max-width: 560px; width: 100%; background: #1A1220;
+      border: 1px solid rgba(201,169,110,0.2); border-radius: 20px; padding: 48px 40px;
+      text-align: center;
+    }
+    @media (max-width: 540px) { .os-card { padding: 36px 24px; } }
+
+    .os-icon {
+      width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 28px;
+      background: rgba(201,169,110,0.1); border: 1.5px solid rgba(201,169,110,0.3);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .os-icon svg { width: 32px; height: 32px; stroke: #C9A96E; }
+
+    .os-heading {
+      font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 300;
+      color: #F5EFE6; margin: 0 0 8px;
+    }
+    .os-sub { font-size: 14px; color: rgba(245,239,230,0.5); margin: 0 0 32px; line-height: 1.6; }
+
+    .os-ref {
+      display: inline-block; padding: 10px 20px; border-radius: 8px;
+      background: rgba(201,169,110,0.08); border: 1px solid rgba(201,169,110,0.2);
+      font-size: 13px; color: #C9A96E; letter-spacing: 0.08em; margin-bottom: 32px;
+    }
+
+    .os-details { text-align: left; margin-bottom: 32px; }
+    .os-detail-row {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 10px 0; border-bottom: 1px solid rgba(245,239,230,0.06);
+      font-size: 13px; gap: 16px;
+    }
+    .os-detail-row:last-child { border-bottom: none; }
+    .os-detail-label { color: rgba(245,239,230,0.4); flex-shrink: 0; }
+    .os-detail-value { color: #F5EFE6; text-align: right; }
+
+    .os-total-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 14px 0; border-top: 1px solid rgba(245,239,230,0.1); margin-top: 4px;
+    }
+    .os-total-label { font-size: 14px; font-weight: 600; color: #F5EFE6; }
+    .os-total-value { font-size: 18px; font-weight: 700; color: #C9A96E; }
+
+    .os-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .os-btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 28px; border-radius: 50px; text-decoration: none;
+      background: linear-gradient(135deg, #C9A96E, #d4b87a);
+      color: #0D0A0E; font-family: 'Outfit', sans-serif;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .os-btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+    .os-btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 13px 24px; border-radius: 50px; text-decoration: none;
+      border: 1px solid rgba(245,239,230,0.15); color: rgba(245,239,230,0.6);
+      font-family: 'Outfit', sans-serif; font-size: 13px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .os-btn-secondary:hover { border-color: rgba(245,239,230,0.35); color: #F5EFE6; }
+
+    .os-footer {
+      border-top: 1px solid rgba(201,169,110,0.1); padding: 20px 24px;
+      text-align: center; font-size: 11px; color: rgba(245,239,230,0.25);
+    }
+  </style>
+</head>
+<body>
+  <header class="os-header">
+    <div class="os-header-inner">
+      <a href="/index.html" class="os-logo" aria-label="Velour Hair Studio — back to home">
+        <span class="os-logo-word">Velour</span>
+        <span class="os-logo-sub">Hair Studio</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="os-main">
+    <div class="os-card" id="os-card">
+      <div class="os-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6L9 17l-5-5"/>
+        </svg>
+      </div>
+      <h1 class="os-heading">Order Confirmed</h1>
+      <p class="os-sub">Thank you for your order. We'll send a confirmation to your email and begin processing right away.</p>
+      <div class="os-ref" id="os-ref">Loading…</div>
+
+      <div class="os-details" id="os-details"></div>
+
+      <div class="os-actions">
+        <a href="/pages/shop.html" class="os-btn-primary">
+          Continue Shopping
+          <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="/index.html" class="os-btn-secondary">Back to Home</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="os-footer">© 2026 Velour Hair Studio · All rights reserved
+  </footer>
+
+  <script>
+    (function() {
+      try {
+        const order = JSON.parse(localStorage.getItem('velour-last-order'));
+        if (!order) return;
+
+        document.getElementById('os-ref').textContent = 'Order #' + order.orderNumber + ' · Ref: ' + order.ref;
+
+        const items = Array.isArray(order.items)
+          ? order.items.map(i => `${i.product?.name || 'Item'} × ${i.qty}`).join(', ')
+          : '—';
+
+        const delivery = order.delivery || {};
+        const methodLabel = delivery.method === 'express' ? 'Express Delivery' : 'Standard Delivery';
+        const address = [delivery.address1, delivery.address2, delivery.city, delivery.state].filter(Boolean).join(', ');
+        const date = order.date ? new Date(order.date).toLocaleDateString('en-NG', { day: 'numeric', month: 'long', year: 'numeric' }) : '—';
+
+        document.getElementById('os-details').innerHTML = `
+          <div class="os-detail-row">
+            <span class="os-detail-label">Items</span>
+            <span class="os-detail-value">${items}</span>
+          </div>
+          <div class="os-detail-row">
+            <span class="os-detail-label">Ship to</span>
+            <span class="os-detail-value">${address || '—'}</span>
+          </div>
+          <div class="os-detail-row">
+            <span class="os-detail-label">Delivery</span>
+            <span class="os-detail-value">${methodLabel}</span>
+          </div>
+          <div class="os-detail-row">
+            <span class="os-detail-label">Date</span>
+            <span class="os-detail-value">${date}</span>
+          </div>
+          <div class="os-total-row">
+            <span class="os-total-label">Total Paid</span>
+            <span class="os-total-value">₦${(order.total || 0).toLocaleString()}</span>
+          </div>`;
+      } catch(e) {}
+    })();
+  </script>
+  <script src="/js/coming-soon.js" data-page="order" defer></script>
+</body>
+</html>

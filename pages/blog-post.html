@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog — Velour Hair Studio</title>
+  <meta name="description" content="Read the latest hair care tips and style guides from Velour Hair Studio." />
+  <link rel="stylesheet" href="/css/output.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="/css/blog.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-cream dark:bg-dark-bg text-ink dark:text-cream antialiased font-outfit">
+  <div id="navbar-placeholder"></div>
+
+  <main id="bp-main">
+    <!-- populated by JS -->
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/js/products-data.js" defer></script>
+  <script src="/js/blog-data.js" defer></script>
+  <script src="/js/cart.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slug = new URLSearchParams(window.location.search).get('post') || BLOG_POSTS[0].slug;
+    const post = BLOG_POSTS.find(p => p.slug === slug);
+    if (!post) { window.location.href = '/pages/404.html'; return; }
+
+    // Update page meta
+    document.title = `${post.title} — Velour Hair Studio`;
+    document.querySelector('meta[name="description"]').content = post.excerpt;
+
+    // Related posts (up to 3, excluding current)
+    const related = BLOG_POSTS.filter(p => p.slug !== post.slug).slice(0, 3);
+
+    document.getElementById('bp-main').innerHTML = `
+      <!-- Hero -->
+      <section class="bp-hero">
+        <div class="bp-hero-img">
+          <img src="${post.img}" alt="${post.title}" />
+        </div>
+        <div class="bp-hero-content">
+          <span class="bp-hero-cat">${post.cat}</span>
+          <h1 class="bp-hero-title">${post.titleHtml}</h1>
+          <div class="bp-hero-meta">
+            <img src="${post.authorImg}" alt="${post.author}" class="bp-hero-author-img" />
+            <span>
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0"/></svg>
+              ${post.author}
+            </span>
+            <span>
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5"/></svg>
+              ${post.date}
+            </span>
+            <span>
+              <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+              ${post.readTime}
+            </span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Layout -->
+      <div class="bp-layout">
+        <article class="bp-article">
+          <div class="bp-prose">${post.body}</div>
+
+          <!-- Tags -->
+          <div class="bp-tags">
+            ${post.tags.map(t => `<a href="/pages/blog.html" class="bp-tag">${t}</a>`).join('')}
+          </div>
+
+          <!-- Share -->
+          <div class="bp-share">
+            <span class="bp-share-label">Share</span>
+            <button class="bp-share-btn" aria-label="Share on X" onclick="window.open('https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url='+encodeURIComponent(location.href))">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4l16 16M4 20L20 4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="bp-share-btn" aria-label="Share on WhatsApp" onclick="window.open('https://wa.me/?text='+encodeURIComponent('${post.title} '+location.href))">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <button class="bp-share-btn" aria-label="Copy link" onclick="navigator.clipboard.writeText(location.href); this.style.background='#6B3F5E'; this.style.borderColor='#6B3F5E'; this.style.color='#F5EFE6'">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M10 13a5 5 0 007.54.54l3-3a5 5 0 00-7.07-7.07l-1.72 1.71" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 11a5 5 0 00-7.54-.54l-3 3a5 5 0 007.07 7.07l1.71-1.71" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+          </div>
+
+          <!-- Author -->
+          <div class="bp-author">
+            <img src="${post.authorImg}" alt="${post.author}" class="bp-author-img" />
+            <div>
+              <p class="bp-author-name">${post.author}</p>
+              <p class="bp-author-role">${post.authorRole}</p>
+              <p class="bp-author-bio">${post.authorBio}</p>
+            </div>
+          </div>
+        </article>
+
+        <!-- Sidebar -->
+        <aside class="bp-sidebar">
+          <!-- TOC -->
+          <div class="bp-sidebar-card">
+            <p class="bp-sidebar-heading">In this article</p>
+            <ul class="bp-toc-list">
+              ${post.toc.map(t => `<li><a href="#${t.id}" class="bp-toc-link">${t.label}</a></li>`).join('')}
+            </ul>
+          </div>
+
+          <!-- Related -->
+          <div class="bp-sidebar-card">
+            <p class="bp-sidebar-heading">Related Articles</p>
+            <div class="bp-related-list">
+              ${related.map(r => `
+                <a href="/pages/blog-post.html?post=${r.slug}" class="bp-related-item">
+                  <div class="bp-related-img"><img src="${r.img}" alt="${r.title}" loading="lazy" /></div>
+                  <div>
+                    <p class="bp-related-cat">${r.cat}</p>
+                    <p class="bp-related-title">${r.title}</p>
+                  </div>
+                </a>`).join('')}
+            </div>
+          </div>
+
+          <!-- CTA -->
+          <div class="bp-sidebar-card" style="background:linear-gradient(135deg,#6B3F5E,#1a0f17);border-color:rgba(201,169,110,0.15);">
+            <p class="bp-sidebar-heading" style="color:rgba(201,169,110,0.7);">Ready to transform your hair?</p>
+            <p style="font-size:13px;color:rgba(245,239,230,0.6);line-height:1.6;margin-bottom:20px;">Book a consultation with one of our specialists and get a personalised hair care plan.</p>
+            <a href="/pages/booking.html" style="display:block;text-align:center;background:#C9A96E;color:#1a0f17;border-radius:100px;padding:12px 20px;font-size:11px;letter-spacing:2px;text-transform:uppercase;font-weight:700;text-decoration:none;">Book Now</a>
+          </div>
+        </aside>
+      </div>
+    `;
+
+    // Scroll reveal
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-revealed'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('[data-reveal]').forEach(el => obs.observe(el));
+  });
+  </script>
+
+  <!-- Global Cart -->
+  <div class="sp-cart-overlay" id="sp-cart-overlay"></div>
+  <aside class="sp-cart" id="sp-cart" hidden>
+    <div class="sp-cart-header">
+      <div class="sp-cart-header-left">
+        <p class="sp-cart-eyebrow">Velour Studio</p>
+        <h2 class="sp-cart-title">Your Cart</h2>
+      </div>
+      <button class="sp-cart-close" id="sp-cart-close" aria-label="Close cart">
+        <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+      </button>
+    </div>
+    <div class="sp-cart-body" id="sp-cart-body"></div>
+    <div class="sp-cart-footer" id="sp-cart-footer"></div>
+  </aside>
+  <button class="sp-cart-fab" id="sp-cart-fab" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="sp-cart-fab-badge" id="sp-cart-badge" hidden>0</span>
+  </button>
+  <div class="sp-toast" id="sp-toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

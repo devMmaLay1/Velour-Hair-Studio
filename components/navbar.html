@@ -1,0 +1,174 @@
+<!-- ═══════════════════════════════════════════════════════════════
+     VELOUR HAIR STUDIO — Premium Navbar
+     ═══════════════════════════════════════════════════════════════ -->
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
+  <!-- Top accent bar -->
+  <div class="h-[1px] bg-gradient-to-r from-transparent via-gold/60 to-transparent"></div>
+
+  <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-8 py-4">
+    <!-- Logo -->
+    <a href="/index.html" class="group relative flex items-center gap-3">
+      <span class="font-fraunces text-2xl tracking-[0.04em] text-plum dark:text-cream transition-colors duration-300">
+        Velour
+      </span>
+      <span class="hidden sm:block w-[1px] h-5 bg-gold/40"></span>
+      <span class="hidden sm:block text-[10px] uppercase tracking-[0.25em] text-ink/50 dark:text-cream/50 font-outfit font-medium">
+        Hair Studio
+      </span>
+      <!-- Hover underline -->
+      <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold group-hover:w-full transition-all duration-500"></span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <div class="hidden lg:flex items-center gap-1">
+      <a href="/index.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
+        Home
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold group-hover:w-3/4 transition-all duration-300"></span>
+      </a>
+      <a href="/pages/services.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
+        Services
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold group-hover:w-3/4 transition-all duration-300"></span>
+      </a>
+      <a href="/pages/about.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
+        About
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold group-hover:w-3/4 transition-all duration-300"></span>
+      </a>
+      <a href="/pages/gallery.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
+        Gallery
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold group-hover:w-3/4 transition-all duration-300"></span>
+      </a>
+      <a href="/pages/shop.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
+        Shop
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold group-hover:w-3/4 transition-all duration-300"></span>
+      </a>
+      <a href="/pages/branches.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
+        Branches
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold group-hover:w-3/4 transition-all duration-300"></span>
+      </a>
+      <a href="/pages/blog.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
+        Blog
+        <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold group-hover:w-3/4 transition-all duration-300"></span>
+      </a>
+    </div>
+
+    <!-- Right side actions -->
+    <div class="flex items-center gap-3">
+      <!-- Dark mode toggle -->
+      <button
+        type="button"
+        data-theme-toggle
+        class="relative w-10 h-10 rounded-full border border-rose/30 dark:border-cream/20 flex items-center justify-center text-ink/70 dark:text-cream/70 hover:border-gold hover:text-gold transition-all duration-300 hover:shadow-[0_0_12px_rgba(201,169,110,0.15)]"
+        aria-label="Toggle dark mode"
+      >
+        <!-- Sun icon (shown in dark mode) -->
+        <svg class="w-[18px] h-[18px] hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+        </svg>
+        <!-- Moon icon (shown in light mode) -->
+        <svg class="w-[18px] h-[18px] block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+        </svg>
+      </button>
+
+      <!-- Book Now CTA (desktop) -->
+      <a
+        href="/pages/booking.html"
+        class="hidden lg:inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-[#d4b87a] text-ink px-7 py-2.5 text-[12px] uppercase tracking-[0.18em] font-outfit font-semibold shadow-[0_2px_12px_rgba(201,169,110,0.25)] hover:shadow-[0_4px_20px_rgba(201,169,110,0.4)] hover:-translate-y-[1px] transition-all duration-300"
+      >
+        Book Now
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        type="button"
+        id="mobile-menu-btn"
+        class="lg:hidden relative w-10 h-10 rounded-full border border-rose/30 dark:border-cream/20 flex items-center justify-center text-ink/80 dark:text-cream/80 hover:border-gold transition-all duration-300"
+        aria-label="Open navigation menu"
+      >
+        <div class="flex flex-col items-center justify-center gap-[5px]" id="hamburger-icon">
+          <span class="block w-5 h-[1.5px] bg-current transition-all duration-300 origin-center" id="bar-1"></span>
+          <span class="block w-3.5 h-[1.5px] bg-current transition-all duration-300 ml-auto" id="bar-2"></span>
+          <span class="block w-5 h-[1.5px] bg-current transition-all duration-300 origin-center" id="bar-3"></span>
+        </div>
+      </button>
+    </div>
+  </nav>
+</header>
+
+<!-- ═══════════════════════════════════════════════════════════════
+     Mobile Full-Screen Nav Overlay
+     ═══════════════════════════════════════════════════════════════ -->
+<div id="mobile-menu" class="fixed inset-0 z-[45] pointer-events-none opacity-0 transition-opacity duration-500">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-cream/95 dark:bg-dark-bg/95 backdrop-blur-xl"></div>
+
+  <!-- Content -->
+  <div class="relative h-full flex flex-col items-center justify-center gap-6 px-8">
+    <!-- Decorative line -->
+    <div class="absolute top-24 left-1/2 -translate-x-1/2 w-8 h-[1px] bg-gold/50"></div>
+
+    <a href="/index.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Home</a>
+    <a href="/pages/services.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Services</a>
+    <a href="/pages/about.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">About</a>
+    <a href="/pages/gallery.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Gallery</a>
+    <a href="/pages/shop.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Shop</a>
+    <a href="/pages/branches.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Branches</a>
+    <a href="/pages/blog.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Blog</a>
+
+    <!-- Decorative line -->
+    <div class="w-8 h-[1px] bg-gold/50 my-2"></div>
+
+    <!-- Mobile Book CTA -->
+    <a
+      href="/pages/booking.html"
+      class="mobile-nav-link inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-[#d4b87a] text-ink px-10 py-3 text-[13px] uppercase tracking-[0.18em] font-outfit font-semibold shadow-[0_2px_12px_rgba(201,169,110,0.25)] translate-y-4 opacity-0"
+    >
+      Book Appointment
+    </a>
+
+    <!-- Mobile dark mode toggle -->
+    <button
+      type="button"
+      data-theme-toggle-mobile
+      class="mobile-nav-link mt-4 flex items-center gap-3 text-sm text-ink/60 dark:text-cream/60 hover:text-gold transition-colors duration-300 translate-y-4 opacity-0"
+      aria-label="Toggle dark mode"
+    >
+      <svg class="w-4 h-4 hidden dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z" />
+      </svg>
+      <svg class="w-4 h-4 block dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z" />
+      </svg>
+      <span class="dark:hidden">Dark Mode</span>
+      <span class="hidden dark:inline">Light Mode</span>
+    </button>
+  </div>
+</div>
+
+<!-- Spacer to offset fixed navbar -->
+<div class="h-[73px]" id="navbar-spacer"></div>
+
+<!-- ── Global Cart Drawer ── -->
+<div class="sp-cart-overlay" id="sp-cart-overlay" aria-hidden="true"></div>
+<aside class="sp-cart" id="sp-cart" role="dialog" aria-label="Shopping cart" aria-modal="true" hidden>
+  <div class="sp-cart-header">
+    <div class="sp-cart-header-left">
+      <p class="sp-cart-eyebrow">Velour Studio</p>
+      <h2 class="sp-cart-title">Your Cart</h2>
+    </div>
+    <button class="sp-cart-close" id="sp-cart-close" aria-label="Close cart">
+      <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+    </button>
+  </div>
+  <div class="sp-cart-body" id="sp-cart-body"></div>
+  <div class="sp-cart-footer" id="sp-cart-footer"></div>
+</aside>
+
+<!-- ── Cart FAB ── -->
+<button class="sp-cart-fab" id="sp-cart-fab" aria-label="Open cart">
+  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+  <span class="sp-cart-fab-badge" id="sp-cart-badge" hidden>0</span>
+</button>
+
+<!-- ── Toast ── -->
+<div class="sp-toast" id="sp-toast" role="status" aria-live="polite" hidden></div>

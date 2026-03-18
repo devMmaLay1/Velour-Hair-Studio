@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book an Appointment — Velour Hair Studio</title>
+  <meta name="description" content="Book your next luxury hair appointment at Velour Hair Studio. Choose your branch, service, stylist, and time." />
+  <link rel="stylesheet" href="/css/output.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="/css/booking.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-cream dark:bg-dark-bg text-ink dark:text-cream antialiased font-outfit light-hero-page">
+  <div id="navbar-placeholder"></div>
+  <main>
+
+    <!-- ── Page hero ── -->
+    <section class="bk-hero">
+      <div class="bk-hero-blob bk-hero-blob--a" aria-hidden="true"></div>
+      <div class="bk-hero-blob bk-hero-blob--b" aria-hidden="true"></div>
+      <div class="bk-hero-line bk-hero-line--top" aria-hidden="true"></div>
+      <div class="bk-hero-line bk-hero-line--bottom" aria-hidden="true"></div>
+      <div class="bk-hero-content">
+        <p class="bk-hero-eyebrow">Book an Appointment</p>
+        <h1 class="bk-hero-heading">Reserve your<br><em>chair at Velour.</em></h1>
+        <p class="bk-hero-sub">Six quick steps — branch, service, stylist, date, your details, and done.</p>
+      </div>
+    </section>
+
+    <!-- ── Booking shell ── -->
+    <section class="bk-section">
+      <div class="bk-wrap">
+
+        <!-- Progress bar — 6 steps -->
+        <div class="bk-progress" role="list" aria-label="Booking steps">
+          <div class="bk-progress-track" aria-hidden="true">
+            <div class="bk-progress-fill" id="bk-progress-fill"></div>
+          </div>
+          <div class="bk-steps bk-steps--6">
+            <div class="bk-step is-active" data-step="1" role="listitem">
+              <div class="bk-step-dot"><span>1</span></div>
+              <p class="bk-step-label">Branch</p>
+            </div>
+            <div class="bk-step" data-step="2" role="listitem">
+              <div class="bk-step-dot"><span>2</span></div>
+              <p class="bk-step-label">Service</p>
+            </div>
+            <div class="bk-step" data-step="3" role="listitem">
+              <div class="bk-step-dot"><span>3</span></div>
+              <p class="bk-step-label">Stylist</p>
+            </div>
+            <div class="bk-step" data-step="4" role="listitem">
+              <div class="bk-step-dot"><span>4</span></div>
+              <p class="bk-step-label">Date &amp; Time</p>
+            </div>
+            <div class="bk-step" data-step="5" role="listitem">
+              <div class="bk-step-dot"><span>5</span></div>
+              <p class="bk-step-label">Details</p>
+            </div>
+            <div class="bk-step" data-step="6" role="listitem">
+              <div class="bk-step-dot"><span>6</span></div>
+              <p class="bk-step-label">Confirm</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step panels -->
+        <div class="bk-panels">
+
+          <!-- ══ STEP 1 — Select Branch ══ -->
+          <div class="bk-panel is-active" id="bk-step-1" role="region" aria-label="Step 1: Select a branch">
+            <div class="bk-panel-header">
+              <p class="bk-panel-eyebrow">Step 1 of 6</p>
+              <h2 class="bk-panel-heading">Which location<br><em>works for you?</em></h2>
+              <p class="bk-panel-sub">All three studios offer the full Velour menu. Pick the one closest to you.</p>
+            </div>
+
+            <div class="bk-branch-grid" role="radiogroup" aria-label="Select a branch">
+              <label class="bk-branch-card" data-branch="vi">
+                <input type="radio" name="branch" value="vi" class="sr-only" />
+                <div class="bk-branch-img-wrap">
+                  <img src="/assets/images/branches/Victoria Island Lagos Exterior.webp" alt="Victoria Island studio" loading="lazy" />
+                  <div class="bk-branch-img-overlay" aria-hidden="true"></div>
+                  <span class="bk-branch-badge">Flagship · HQ</span>
+                </div>
+                <div class="bk-branch-body">
+                  <div class="bk-branch-top">
+                    <div>
+                      <p class="bk-branch-city">Lagos</p>
+                      <h3 class="bk-branch-name">Victoria Island</h3>
+                      <p class="bk-branch-address">14 Adeola Odeku Street, VI</p>
+                    </div>
+                    <span class="bk-branch-check" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+                    </span>
+                  </div>
+                  <div class="bk-branch-meta">
+                    <span class="bk-branch-meta-item">
+                      <svg viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5v2.5l1.5 1.5"/></svg>
+                      Tue – Sun · 9 am – 8 pm
+                    </span>
+                    <span class="bk-branch-meta-item">
+                      <svg viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7.5a2 2 0 100-4 2 2 0 000 4z"/><path d="M7 1C4.24 1 2 3.24 2 5.5c0 3.28 5 7.5 5 7.5s5-4.22 5-7.5C12 3.24 9.76 1 7 1z"/></svg>
+                      Victoria Island, Lagos
+                    </span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="bk-branch-card" data-branch="lekki">
+                <input type="radio" name="branch" value="lekki" class="sr-only" />
+                <div class="bk-branch-img-wrap">
+                  <img src="/assets/images/branches/Lekki Phase 1 Lagos Exterior.webp" alt="Lekki studio" loading="lazy" />
+                  <div class="bk-branch-img-overlay" aria-hidden="true"></div>
+                  <span class="bk-branch-badge bk-branch-badge--new">New · 2024</span>
+                </div>
+                <div class="bk-branch-body">
+                  <div class="bk-branch-top">
+                    <div>
+                      <p class="bk-branch-city">Lagos</p>
+                      <h3 class="bk-branch-name">Lekki Phase 1</h3>
+                      <p class="bk-branch-address">7 Admiralty Way, Lekki Phase 1</p>
+                    </div>
+                    <span class="bk-branch-check" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+                    </span>
+                  </div>
+                  <div class="bk-branch-meta">
+                    <span class="bk-branch-meta-item">
+                      <svg viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5v2.5l1.5 1.5"/></svg>
+                      Tue – Sun · 9 am – 8 pm
+                    </span>
+                    <span class="bk-branch-meta-item">
+                      <svg viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7.5a2 2 0 100-4 2 2 0 000 4z"/><path d="M7 1C4.24 1 2 3.24 2 5.5c0 3.28 5 7.5 5 7.5s5-4.22 5-7.5C12 3.24 9.76 1 7 1z"/></svg>
+                      Lekki Phase 1, Lagos
+                    </span>
+                  </div>
+                </div>
+              </label>
+
+              <label class="bk-branch-card" data-branch="abuja">
+                <input type="radio" name="branch" value="abuja" class="sr-only" />
+                <div class="bk-branch-img-wrap">
+                  <img src="/assets/images/branches/Wuse 2 Abuja Exterior.webp" alt="Abuja studio" loading="lazy" />
+                  <div class="bk-branch-img-overlay" aria-hidden="true"></div>
+                  <span class="bk-branch-badge bk-branch-badge--abuja">Abuja</span>
+                </div>
+                <div class="bk-branch-body">
+                  <div class="bk-branch-top">
+                    <div>
+                      <p class="bk-branch-city">Abuja</p>
+                      <h3 class="bk-branch-name">Wuse 2</h3>
+                      <p class="bk-branch-address">Plot 1204 Aminu Kano Crescent, Wuse 2</p>
+                    </div>
+                    <span class="bk-branch-check" aria-hidden="true">
+                      <svg viewBox="0 0 16 16" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5l3.5 3.5 6.5-7"/></svg>
+                    </span>
+                  </div>
+                  <div class="bk-branch-meta">
+                    <span class="bk-branch-meta-item">
+                      <svg viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="5.5"/><path d="M7 4.5v2.5l1.5 1.5"/></svg>
+                      Mon – Sat · 10 am – 7 pm
+                    </span>
+                    <span class="bk-branch-meta-item">
+                      <svg viewBox="0 0 14 14" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 7.5a2 2 0 100-4 2 2 0 000 4z"/><path d="M7 1C4.24 1 2 3.24 2 5.5c0 3.28 5 7.5 5 7.5s5-4.22 5-7.5C12 3.24 9.76 1 7 1z"/></svg>
+                      Wuse 2, Abuja
+                    </span>
+                  </div>
+                </div>
+              </label>
+            </div>
+
+            <div class="bk-panel-footer">
+              <span class="bk-selection-hint" id="bk-branch-hint">Select a branch to continue</span>
+              <button class="bk-btn-next" id="bk-step1-next" disabled>
+                Continue
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+              </button>
+            </div>
+          </div><!-- /step-1 -->
+
+          <!-- ══ STEP 2 — Select Service ══ -->
+          <div class="bk-panel" id="bk-step-2" role="region" aria-label="Step 2: Select a service" hidden>
+            <div class="bk-panel-header">
+              <p class="bk-panel-eyebrow">Step 2 of 6</p>
+              <h2 class="bk-panel-heading">What are you<br><em>coming in for?</em></h2>
+              <p class="bk-panel-sub">Choose a category, then pick your service. Prices are starting rates.</p>
+            </div>
+            <div class="bk-svc-tabs" role="tablist" aria-label="Service categories" id="bk-svc-tabs">
+              <button class="bk-svc-tab is-active" data-cat="all"        role="tab" aria-selected="true">All</button>
+              <button class="bk-svc-tab"           data-cat="hair-care"  role="tab" aria-selected="false">Hair Care</button>
+              <button class="bk-svc-tab"           data-cat="braids"     role="tab" aria-selected="false">Braids</button>
+              <button class="bk-svc-tab"           data-cat="colour"     role="tab" aria-selected="false">Colour</button>
+              <button class="bk-svc-tab"           data-cat="relaxer"    role="tab" aria-selected="false">Relaxer</button>
+              <button class="bk-svc-tab"           data-cat="treatments" role="tab" aria-selected="false">Treatments</button>
+            </div>
+            <div class="bk-svc-list" id="bk-svc-list" role="radiogroup" aria-label="Select a service"></div>
+            <nav class="bk-svc-pagination" id="bk-svc-pagination" aria-label="Service pages"></nav>
+            <div class="bk-panel-footer">
+              <button class="bk-btn-back" id="bk-step2-back">
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+                Back
+              </button>
+              <div class="bk-footer-right">
+                <span class="bk-selection-hint" id="bk-svc-hint">Select a service to continue</span>
+                <button class="bk-btn-next" id="bk-step2-next" disabled>
+                  Continue
+                  <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ STEP 3 — Select Stylist ══ -->
+          <div class="bk-panel" id="bk-step-3" role="region" aria-label="Step 3: Select a stylist" hidden>
+            <div class="bk-panel-header">
+              <p class="bk-panel-eyebrow">Step 3 of 6</p>
+              <h2 class="bk-panel-heading">Who's doing<br><em>your hair?</em></h2>
+              <p class="bk-panel-sub">Pick a stylist or leave it to us — every hand at Velour is exceptional.</p>
+            </div>
+            <div class="bk-stylist-grid" id="bk-stylist-grid" role="radiogroup" aria-label="Select a stylist"></div>
+            <div class="bk-panel-footer">
+              <button class="bk-btn-back" id="bk-step3-back">
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+                Back
+              </button>
+              <div class="bk-footer-right">
+                <span class="bk-selection-hint" id="bk-stylist-hint">Select a stylist to continue</span>
+                <button class="bk-btn-next" id="bk-step3-next" disabled>
+                  Continue
+                  <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ STEP 4 — Date & Time ══ -->
+          <div class="bk-panel" id="bk-step-4" role="region" aria-label="Step 4: Pick date and time" hidden>
+            <div class="bk-panel-header">
+              <p class="bk-panel-eyebrow">Step 4 of 6</p>
+              <h2 class="bk-panel-heading">When shall we<br><em>expect you?</em></h2>
+              <p class="bk-panel-sub">Pick a date and time that works for you. Sundays we rest.</p>
+            </div>
+            <div class="bk-datetime-wrap">
+              <div class="bk-calendar-wrap">
+                <div id="bk-calendar"></div>
+              </div>
+              <div class="bk-time-wrap" id="bk-time-slots">
+                <p class="bk-time-label bk-time-label--empty">Select a date to see available times</p>
+              </div>
+            </div>
+            <div class="bk-panel-footer">
+              <button class="bk-btn-back" id="bk-step4-back">
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+                Back
+              </button>
+              <div class="bk-footer-right">
+                <span class="bk-selection-hint" id="bk-datetime-hint">Select a date &amp; time to continue</span>
+                <button class="bk-btn-next" id="bk-step4-next" disabled>
+                  Continue
+                  <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ STEP 5 — Your Details ══ -->
+          <div class="bk-panel" id="bk-step-5" role="region" aria-label="Step 5: Your details" hidden>
+            <div class="bk-panel-header">
+              <p class="bk-panel-eyebrow">Step 5 of 6</p>
+              <h2 class="bk-panel-heading">Almost there —<br><em>just your details.</em></h2>
+              <p class="bk-panel-sub">We'll use these to send your confirmation and remind you before your visit.</p>
+            </div>
+
+            <form class="bk-details-form" id="bk-details-form" novalidate>
+              <div class="bk-field-row">
+                <div class="bk-field">
+                  <label class="bk-field-label" for="bk-name">Full Name <span aria-hidden="true">*</span></label>
+                  <input class="bk-field-input" type="text" id="bk-name" name="name" placeholder="e.g. Adaeze Okonkwo" autocomplete="name" required />
+                  <p class="bk-field-error" id="bk-name-err" role="alert" hidden>Please enter your full name</p>
+                </div>
+              </div>
+              <div class="bk-field-row bk-field-row--2">
+                <div class="bk-field">
+                  <label class="bk-field-label" for="bk-phone">Phone Number <span aria-hidden="true">*</span></label>
+                  <div class="bk-field-phone-wrap">
+                    <span class="bk-field-phone-prefix">+234</span>
+                    <input class="bk-field-input bk-field-input--phone" type="tel" id="bk-phone" name="phone" placeholder="080 0000 0000" autocomplete="tel" required />
+                  </div>
+                  <p class="bk-field-error" id="bk-phone-err" role="alert" hidden>Please enter a valid phone number</p>
+                </div>
+                <div class="bk-field">
+                  <label class="bk-field-label" for="bk-email">Email Address <span aria-hidden="true">*</span></label>
+                  <input class="bk-field-input" type="email" id="bk-email" name="email" placeholder="you@example.com" autocomplete="email" required />
+                  <p class="bk-field-error" id="bk-email-err" role="alert" hidden>Please enter a valid email address</p>
+                </div>
+              </div>
+              <div class="bk-field">
+                <label class="bk-field-label" for="bk-notes">Special Requests <span class="bk-field-optional">(optional)</span></label>
+                <textarea class="bk-field-input bk-field-textarea" id="bk-notes" name="notes" rows="3" placeholder="Allergies, hair concerns, anything we should know…"></textarea>
+              </div>
+            </form>
+
+            <div class="bk-panel-footer">
+              <button class="bk-btn-back" id="bk-step5-back">
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+                Back
+              </button>
+              <div class="bk-footer-right">
+                <span class="bk-selection-hint" id="bk-details-hint">Fill in your details to review</span>
+                <button class="bk-btn-next" id="bk-step5-next">
+                  Review Booking
+                  <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- ══ STEP 6 — Confirm & Pay ══ -->
+          <div class="bk-panel" id="bk-step-6" role="region" aria-label="Step 6: Confirm your booking" hidden>
+            <div class="bk-panel-header">
+              <p class="bk-panel-eyebrow">Step 6 of 6</p>
+              <h2 class="bk-panel-heading">Review &amp;<br><em>confirm.</em></h2>
+              <p class="bk-panel-sub">Everything look right? Hit confirm and your chair is reserved.</p>
+            </div>
+
+            <!-- Summary card — populated by JS -->
+            <div class="bk-review-card" id="bk-review-card"></div>
+
+            <div class="bk-panel-footer">
+              <button class="bk-btn-back" id="bk-step6-back">
+                <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 8H3M7 4L3 8l4 4"/></svg>
+                Back
+              </button>
+              <div class="bk-footer-right">
+                <button class="bk-btn-next bk-btn-confirm" id="bk-step6-confirm">
+                  Confirm Booking
+                  <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /bk-panels -->
+      </div><!-- /bk-wrap -->
+    </section>
+
+  </main>
+  <div id="footer-placeholder"></div>
+  <script src="/js/products-data.js" defer></script>
+  <script src="/js/cart.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/booking.js" defer></script>
+
+  <!-- Global Cart -->
+  <div class="sp-cart-overlay" id="sp-cart-overlay"></div>
+  <aside class="sp-cart" id="sp-cart" hidden>
+    <div class="sp-cart-header">
+      <div class="sp-cart-header-left">
+        <p class="sp-cart-eyebrow">Velour Studio</p>
+        <h2 class="sp-cart-title">Your Cart</h2>
+      </div>
+      <button class="sp-cart-close" id="sp-cart-close" aria-label="Close cart">
+        <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+      </button>
+    </div>
+    <div class="sp-cart-body" id="sp-cart-body"></div>
+    <div class="sp-cart-footer" id="sp-cart-footer"></div>
+  </aside>
+  <button class="sp-cart-fab" id="sp-cart-fab" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="sp-cart-fab-badge" id="sp-cart-badge" hidden>0</span>
+  </button>
+  <div class="sp-toast" id="sp-toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>

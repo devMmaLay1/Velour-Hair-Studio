@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart — Velour Hair Studio</title>
+  <meta name="description" content="Review your cart and proceed to checkout at Velour Hair Studio." />
+  <link rel="stylesheet" href="/css/output.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="/css/cart-page.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-cream dark:bg-dark-bg text-ink dark:text-cream antialiased font-outfit light-hero-page">
+  <div id="navbar-placeholder"></div>
+
+  <main id="cp-main">
+
+    <!-- ── Page header ── -->
+    <div class="cp-header">
+      <div class="cp-wrap">
+        <nav class="cp-breadcrumb" aria-label="Breadcrumb">
+          <a href="/pages/shop.html">Shop</a>
+          <svg viewBox="0 0 16 16" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 4l4 4-4 4"/></svg>
+          <span aria-current="page">Cart</span>
+        </nav>
+        <div class="cp-header-row">
+          <h1 class="cp-heading">Your Cart <em id="cp-item-count"></em></h1>
+          <button class="cp-clear-btn" id="cp-clear-btn" aria-label="Clear all items">Clear all</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Empty state ── -->
+    <div class="cp-empty" id="cp-empty" hidden>
+      <div class="cp-empty-inner">
+        <div class="cp-empty-icon" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 8h6l4 24h28l4-16H14"/>
+            <circle cx="24" cy="52" r="3"/>
+            <circle cx="44" cy="52" r="3"/>
+          </svg>
+        </div>
+        <h2 class="cp-empty-heading">Your cart is empty.</h2>
+        <p class="cp-empty-sub">Looks like you haven't added anything yet. Browse our collection and find something you'll love.</p>
+        <a href="/pages/shop.html" class="cp-empty-cta">
+          Shop Now
+          <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- ── Two-column layout ── -->
+    <div class="cp-layout" id="cp-layout" hidden>
+      <div class="cp-wrap cp-layout-inner">
+
+        <!-- LEFT: Items list -->
+        <div class="cp-items-col">
+          <div class="cp-items-list" id="cp-items-list"></div>
+        </div>
+
+        <!-- RIGHT: Order summary -->
+        <aside class="cp-summary-col">
+          <div class="cp-summary-card" id="cp-summary-card">
+
+            <p class="cp-summary-heading">Order Summary</p>
+
+            <!-- Coupon -->
+            <div class="cp-coupon-wrap">
+              <label for="cp-coupon-input" class="cp-coupon-label">Coupon Code</label>
+              <div class="cp-coupon-row">
+                <input type="text" id="cp-coupon-input" class="cp-coupon-input" placeholder="e.g. VELOUR10" autocomplete="off" spellcheck="false" />
+                <button class="cp-coupon-btn" id="cp-coupon-btn">Apply</button>
+              </div>
+              <p class="cp-coupon-msg" id="cp-coupon-msg" aria-live="polite"></p>
+            </div>
+
+            <div class="cp-summary-sep"></div>
+
+            <!-- Line items -->
+            <div class="cp-summary-lines">
+              <div class="cp-summary-row">
+                <span>Subtotal</span>
+                <span id="cp-subtotal">₦0</span>
+              </div>
+              <div class="cp-summary-row" id="cp-discount-row" hidden>
+                <span class="cp-discount-label">Discount <span id="cp-discount-code-label"></span></span>
+                <span id="cp-discount-amount" class="cp-discount-val">−₦0</span>
+              </div>
+              <div class="cp-summary-row">
+                <span>Delivery</span>
+                <span id="cp-delivery">₦2,500</span>
+              </div>
+            </div>
+
+            <!-- Delivery options -->
+            <div class="cp-delivery-opts" id="cp-delivery-opts">
+              <label class="cp-delivery-opt">
+                <input type="radio" name="cp-delivery" value="standard" checked />
+                <span class="cp-delivery-opt-body">
+                  <span class="cp-delivery-opt-name">Standard (2–4 days)</span>
+                  <span class="cp-delivery-opt-price" id="cp-std-price">₦2,500</span>
+                </span>
+              </label>
+              <label class="cp-delivery-opt">
+                <input type="radio" name="cp-delivery" value="express" />
+                <span class="cp-delivery-opt-body">
+                  <span class="cp-delivery-opt-name">Express (next day)</span>
+                  <span class="cp-delivery-opt-price">₦4,500</span>
+                </span>
+              </label>
+            </div>
+
+            <div class="cp-summary-sep"></div>
+
+            <div class="cp-summary-row cp-total-row">
+              <span>Total</span>
+              <strong id="cp-total">₦0</strong>
+            </div>
+
+            <a href="/pages/checkout.html" class="cp-checkout-btn" id="cp-checkout-btn">
+              Proceed to Checkout
+              <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            </a>
+
+            <div class="cp-summary-secure">
+              <svg viewBox="0 0 16 16" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2L3 4.5v4C3 11.5 5.5 14 8 15c2.5-1 5-3.5 5-6.5v-4L8 2z"/></svg>
+              <span>Secure checkout · SSL encrypted</span>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+
+    <!-- ── You may also like ── -->
+    <section class="cp-upsell" id="cp-upsell" hidden>
+      <div class="cp-wrap">
+        <p class="cp-upsell-eyebrow">You may also like</p>
+        <h2 class="cp-upsell-heading">Complete your <em>routine.</em></h2>
+        <div class="cp-upsell-track" id="cp-upsell-track"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="footer-placeholder"></div>
+
+  <script src="/js/products-data.js" defer></script>
+  <script src="/js/cart.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/cart-page.js" defer></script>
+
+  <!-- Global Cart -->
+  <div class="sp-cart-overlay" id="sp-cart-overlay"></div>
+  <aside class="sp-cart" id="sp-cart" hidden>
+    <div class="sp-cart-header">
+      <div class="sp-cart-header-left">
+        <p class="sp-cart-eyebrow">Velour Studio</p>
+        <h2 class="sp-cart-title">Your Cart</h2>
+      </div>
+      <button class="sp-cart-close" id="sp-cart-close" aria-label="Close cart">
+        <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+      </button>
+    </div>
+    <div class="sp-cart-body" id="sp-cart-body"></div>
+    <div class="sp-cart-footer" id="sp-cart-footer"></div>
+  </aside>
+  <button class="sp-cart-fab" id="sp-cart-fab" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="sp-cart-fab-badge" id="sp-cart-badge" hidden>0</span>
+  </button>
+  <div class="sp-toast" id="sp-toast" role="status" aria-live="polite" hidden></div>
+  <script src="/js/coming-soon.js" data-page="cart" defer></script>
+</body>
+</html>

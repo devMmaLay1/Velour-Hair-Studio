@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop — Velour Hair Studio</title>
+  <meta name="description" content="Shop premium hair care products, tools, and Velour-branded merchandise." />
+  <link rel="stylesheet" href="/css/output.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="/css/shop.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+<body class="min-h-screen bg-cream dark:bg-dark-bg text-ink dark:text-cream antialiased font-outfit light-hero-page">
+  <div id="navbar-placeholder"></div>
+  <main>
+
+    <!-- ── Hero ── -->
+    <section class="sp-hero">
+      <div class="sp-hero-blob sp-hero-blob--a" aria-hidden="true"></div>
+      <div class="sp-hero-blob sp-hero-blob--b" aria-hidden="true"></div>
+      <div class="sp-hero-line sp-hero-line--top" aria-hidden="true"></div>
+      <div class="sp-hero-line sp-hero-line--bottom" aria-hidden="true"></div>
+      <div class="sp-hero-content">
+        <p class="sp-hero-eyebrow">Velour Shop</p>
+        <h1 class="sp-hero-heading">Products that<br><em>perform.</em></h1>
+        <p class="sp-hero-sub">The same professional-grade products we use in the studio — now available for you to take home.</p>
+      </div>
+    </section>
+
+    <!-- ── Shop shell ── -->
+    <section class="sp-section">
+      <div class="sp-wrap">
+
+        <!-- Toolbar: filter + sort + count -->
+        <div class="sp-toolbar">
+          <!-- Filter tabs -->
+          <div class="sp-filter-tabs" role="tablist" aria-label="Product categories" id="sp-filter-tabs">
+            <button class="sp-filter-tab is-active" data-cat="all"        role="tab" aria-selected="true">All</button>
+            <button class="sp-filter-tab"           data-cat="shampoo"    role="tab" aria-selected="false">Shampoo</button>
+            <button class="sp-filter-tab"           data-cat="conditioner"role="tab" aria-selected="false">Conditioner</button>
+            <button class="sp-filter-tab"           data-cat="oils"       role="tab" aria-selected="false">Oils</button>
+            <button class="sp-filter-tab"           data-cat="tools"      role="tab" aria-selected="false">Tools</button>
+            <button class="sp-filter-tab"           data-cat="merch"      role="tab" aria-selected="false">Merch</button>
+          </div>
+          <!-- Sort + count -->
+          <div class="sp-toolbar-right">
+            <span class="sp-count"><span id="sp-count-num">0</span> products</span>
+            <div class="sp-sort-wrap">
+              <label class="sr-only" for="sp-sort">Sort by</label>
+              <select class="sp-sort" id="sp-sort">
+                <option value="default">Featured</option>
+                <option value="price-asc">Price: Low → High</option>
+                <option value="price-desc">Price: High → Low</option>
+                <option value="name">Name A–Z</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Product grid -->
+        <div class="sp-grid" id="sp-grid" role="list" aria-label="Products"></div>
+
+        <!-- Empty state -->
+        <div class="sp-empty" id="sp-empty" hidden>
+          <svg viewBox="0 0 48 48" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="24" cy="24" r="20"/><path d="M16 24h16M24 16v16"/></svg>
+          <p>No products in this category yet.</p>
+        </div>
+
+        <!-- Pagination -->
+        <nav class="sp-pagination" id="sp-pagination" aria-label="Product pages"></nav>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Cart drawer ── -->
+  <div class="sp-cart-overlay" id="sp-cart-overlay" aria-hidden="true"></div>
+  <aside class="sp-cart" id="sp-cart" role="dialog" aria-label="Shopping cart" aria-modal="true" hidden>
+    <div class="sp-cart-header">
+      <div class="sp-cart-header-left">
+        <p class="sp-cart-eyebrow">Velour Studio</p>
+        <h2 class="sp-cart-title">Your Cart</h2>
+      </div>
+      <button class="sp-cart-close" id="sp-cart-close" aria-label="Close cart">
+        <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+      </button>
+    </div>
+    <div class="sp-cart-body" id="sp-cart-body"></div>
+    <div class="sp-cart-footer" id="sp-cart-footer"></div>
+  </aside>
+
+  <!-- ── Cart FAB ── -->
+  <button class="sp-cart-fab" id="sp-cart-fab" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="sp-cart-fab-badge" id="sp-cart-badge" hidden>0</span>
+  </button>
+
+  <!-- ── Toast ── -->
+  <div class="sp-toast" id="sp-toast" role="status" aria-live="polite" hidden></div>
+
+  <div id="footer-placeholder"></div>
+  <script src="/js/products-data.js" defer></script>
+  <script src="/js/cart.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/js/shop.js" defer></script>
+  <script src="/js/coming-soon.js" data-page="shop" defer></script>
+</body>
+</html>

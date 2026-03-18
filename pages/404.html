@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page Not Found · Velour Hair Studio</title>
+  <link rel="stylesheet" href="/css/output.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ── keyframes ── */
+    @keyframes fadeUp   { from { opacity:0; transform:translateY(22px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes floatY   { 0%,100% { transform:translateY(0); } 50% { transform:translateY(-14px); } }
+    @keyframes shimmer  { 0%,100% { opacity:.18; } 50% { opacity:.32; } }
+    @keyframes spinSlow { to { transform:rotate(360deg); } }
+
+    /* ── page shell ── */
+    .nf-page {
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      background: #F5EFE6;
+      transition: background .4s ease;
+      overflow: hidden;
+      position: relative;
+    }
+    .dark .nf-page { background: #0D0A0E; }
+
+    /* ── ambient blobs ── */
+    .nf-blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); pointer-events: none; z-index: 0;
+    }
+    .nf-blob--a { width:560px; height:560px; background:rgba(107,63,94,.10); top:-180px; left:-140px; animation:shimmer 6s ease-in-out infinite; }
+    .nf-blob--b { width:420px; height:420px; background:rgba(201,169,110,.08); bottom:-120px; right:-100px; animation:shimmer 8s ease-in-out 2s infinite; }
+    .nf-blob--c { width:260px; height:260px; background:rgba(212,165,165,.07); top:40%; left:55%; animation:shimmer 7s ease-in-out 1s infinite; }
+
+    /* ── top + bottom gold lines ── */
+    .nf-line {
+      position: absolute; left:0; right:0; height:1px;
+      background: linear-gradient(90deg, transparent, rgba(201,169,110,.22) 50%, transparent);
+      z-index: 1;
+    }
+    .nf-line--top    { top:0; }
+    .nf-line--bottom { bottom:0; }
+
+    /* ── main content ── */
+    .nf-main {
+      flex: 1; display:flex; align-items:center; justify-content:center;
+      padding: 80px 24px; position:relative; z-index:2;
+    }
+
+    .nf-inner { text-align:center; max-width:600px; }
+
+    /* ── giant 404 ── */
+    .nf-number {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(120px, 22vw, 220px);
+      font-weight: 300; line-height: .9;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(107,63,94,.18);
+      letter-spacing: -.02em;
+      user-select: none;
+      animation: floatY 5s ease-in-out infinite, fadeUp .8s ease-out .05s both;
+      position: relative; display: inline-block;
+    }
+    .dark .nf-number { -webkit-text-stroke-color: rgba(201,169,110,.15); }
+
+    /* scissors icon inside the number */
+    .nf-scissors {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%,-50%);
+      width: clamp(48px, 8vw, 80px); height: clamp(48px, 8vw, 80px);
+      opacity: .22;
+      animation: spinSlow 18s linear infinite;
+    }
+    .dark .nf-scissors { opacity: .15; }
+    .nf-scissors svg { width:100%; height:100%; stroke:#6B3F5E; }
+    .dark .nf-scissors svg { stroke:#C9A96E; }
+
+    /* ── eyebrow ── */
+    .nf-eyebrow {
+      display: inline-flex; align-items:center; gap:10px;
+      font-size:10px; letter-spacing:3.5px; text-transform:uppercase; font-weight:600; color:#C9A96E;
+      margin-bottom:18px;
+      animation: fadeUp .7s ease-out .3s both;
+    }
+    .nf-eyebrow::before, .nf-eyebrow::after { content:''; width:22px; height:.5px; background:#C9A96E; opacity:.45; }
+
+    /* ── heading ── */
+    .nf-heading {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 5vw, 48px); font-weight:300; line-height:1.1;
+      color:#1a0f17; margin-bottom:16px;
+      animation: fadeUp .7s ease-out .45s both;
+      transition: color .4s ease;
+    }
+    .dark .nf-heading { color:#F5EFE6; }
+    .nf-heading em { font-style:italic; color:#6B3F5E; }
+    .dark .nf-heading em { color:#C9A96E; }
+
+    /* ── sub copy ── */
+    .nf-sub {
+      font-size:15px; color:rgba(26,15,23,.58); line-height:1.75;
+      max-width:420px; margin:0 auto 36px;
+      animation: fadeUp .7s ease-out .58s both;
+      transition: color .4s ease;
+    }
+    .dark .nf-sub { color:rgba(245,239,230,.5); }
+
+    /* ── actions ── */
+    .nf-actions {
+      display:flex; align-items:center; justify-content:center; gap:12px; flex-wrap:wrap;
+      animation: fadeUp .7s ease-out .7s both;
+    }
+
+    .nf-btn-primary {
+      display:inline-flex; align-items:center; gap:9px;
+      background: linear-gradient(135deg, #C9A96E, #d4b87a);
+      color:#1a0f17; border:none; border-radius:100px;
+      padding:14px 32px;
+      font-family:'Outfit',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600;
+      text-decoration:none; cursor:pointer;
+      box-shadow: 0 4px 18px rgba(201,169,110,.3);
+      transition: transform .2s ease, box-shadow .25s ease;
+    }
+    .nf-btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 28px rgba(201,169,110,.45); }
+    .nf-btn-primary svg { width:14px; height:14px; stroke:currentColor; }
+
+    .nf-btn-ghost {
+      display:inline-flex; align-items:center; gap:8px;
+      background:transparent; color:rgba(26,15,23,.6);
+      border:.5px solid rgba(107,63,94,.22); border-radius:100px;
+      padding:14px 28px;
+      font-family:'Outfit',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:600;
+      text-decoration:none; cursor:pointer;
+      transition: all .25s ease;
+    }
+    .nf-btn-ghost:hover { border-color:#6B3F5E; color:#6B3F5E; background:rgba(107,63,94,.05); }
+    .dark .nf-btn-ghost { color:rgba(245,239,230,.55); border-color:rgba(255,255,255,.12); }
+    .dark .nf-btn-ghost:hover { border-color:rgba(201,169,110,.4); color:#C9A96E; background:rgba(201,169,110,.05); }
+
+    /* ── quick links ── */
+    .nf-links {
+      margin-top:48px; padding-top:32px;
+      border-top:.5px solid rgba(107,63,94,.1);
+      animation: fadeUp .7s ease-out .82s both;
+      transition: border-color .4s ease;
+    }
+    .dark .nf-links { border-color:rgba(255,255,255,.07); }
+
+    .nf-links-label {
+      font-size:10px; letter-spacing:2.5px; text-transform:uppercase; font-weight:600;
+      color:rgba(26,15,23,.35); margin-bottom:18px;
+      transition: color .4s ease;
+    }
+    .dark .nf-links-label { color:rgba(245,239,230,.3); }
+
+    .nf-links-row {
+      display:flex; align-items:center; justify-content:center; gap:8px; flex-wrap:wrap;
+    }
+
+    .nf-link {
+      display:inline-flex; align-items:center; gap:5px;
+      font-size:12px; font-weight:500; color:rgba(26,15,23,.55);
+      text-decoration:none; padding:7px 16px;
+      border:.5px solid rgba(107,63,94,.1); border-radius:100px;
+      transition: all .22s ease;
+    }
+    .dark .nf-link { color:rgba(245,239,230,.45); border-color:rgba(255,255,255,.08); }
+    .nf-link:hover { color:#6B3F5E; border-color:rgba(107,63,94,.3); background:rgba(107,63,94,.04); }
+    .dark .nf-link:hover { color:#C9A96E; border-color:rgba(201,169,110,.3); background:rgba(201,169,110,.05); }
+
+    /* ── reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      .nf-number, .nf-scissors { animation: fadeUp .5s ease-out both; }
+      .nf-blob--a, .nf-blob--b, .nf-blob--c { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="nf-page" id="nf-page">
+    <!-- ambient -->
+    <div class="nf-blob nf-blob--a" aria-hidden="true"></div>
+    <div class="nf-blob nf-blob--b" aria-hidden="true"></div>
+    <div class="nf-blob nf-blob--c" aria-hidden="true"></div>
+    <div class="nf-line nf-line--top"    aria-hidden="true"></div>
+    <div class="nf-line nf-line--bottom" aria-hidden="true"></div>
+
+    <div id="navbar-placeholder"></div>
+
+    <main class="nf-main">
+      <div class="nf-inner">
+
+        <!-- giant 404 -->
+        <div class="nf-number" aria-hidden="true">
+          404
+          <span class="nf-scissors" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/>
+              <path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/>
+            </svg>
+          </span>
+        </div>
+
+        <p class="nf-eyebrow">Lost in the salon</p>
+
+        <h1 class="nf-heading">
+          This page got a trim<br><em>and never came back.</em>
+        </h1>
+
+        <p class="nf-sub">
+          Whoever sent you here clearly needs a new stylist. The page you're looking for has moved, been retired, or simply doesn't exist — much like a bad hair day, we'd rather not dwell on it.
+        </p>
+
+        <div class="nf-actions">
+          <a href="/index.html" class="nf-btn-primary">
+            <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+            Back to Home
+          </a>
+          <a href="/pages/booking.html" class="nf-btn-ghost">Book an Appointment</a>
+        </div>
+
+        <!-- quick nav links -->
+        <div class="nf-links">
+          <p class="nf-links-label">Or try one of these</p>
+          <div class="nf-links-row">
+            <a href="/pages/services.html" class="nf-link">Services</a>
+            <a href="/pages/gallery.html"  class="nf-link">Gallery</a>
+            <a href="/pages/about.html"    class="nf-link">About</a>
+            <a href="/pages/team.html"     class="nf-link">Our Team</a>
+            <a href="/pages/branches.html" class="nf-link">Branches</a>
+            <a href="/pages/contact.html"  class="nf-link">Contact</a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+  </div>
+
+  <script src="/js/products-data.js" defer></script>
+  <script src="/js/cart.js" defer></script>
+  <script src="/js/main.js" defer></script>
+  <script>
+    // Apply dark class immediately to avoid flash
+    if (localStorage.getItem('theme') === 'dark' ||
+       (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
+
+  <!-- Global Cart -->
+  <div class="sp-cart-overlay" id="sp-cart-overlay"></div>
+  <aside class="sp-cart" id="sp-cart" hidden>
+    <div class="sp-cart-header">
+      <div class="sp-cart-header-left">
+        <p class="sp-cart-eyebrow">Velour Studio</p>
+        <h2 class="sp-cart-title">Your Cart</h2>
+      </div>
+      <button class="sp-cart-close" id="sp-cart-close" aria-label="Close cart">
+        <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
+      </button>
+    </div>
+    <div class="sp-cart-body" id="sp-cart-body"></div>
+    <div class="sp-cart-footer" id="sp-cart-footer"></div>
+  </aside>
+  <button class="sp-cart-fab" id="sp-cart-fab" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span class="sp-cart-fab-badge" id="sp-cart-badge" hidden>0</span>
+  </button>
+  <div class="sp-toast" id="sp-toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
