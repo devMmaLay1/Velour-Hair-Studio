@@ -1,0 +1,21 @@
+{
+  "name": "Velour Hair Studio",
+  "short_name": "Velour",
+  "description": "Luxury hair salon in Lagos, Nigeria",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0D0A0E",
+  "theme_color": "#6B3F5E",
+  "icons": [
+    {
+      "src": "/assets/images/brand/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/brand/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" width="800" height="300" role="img" aria-label="Velour Hair Studio">
+  <title>Velour Hair Studio</title>
+
+  <!-- VELOUR wordmark — cream/white for dark backgrounds -->
+  <text
+    x="400"
+    y="185"
+    text-anchor="middle"
+    font-family="'Cormorant Garamond', 'Playfair Display', 'Didot', Georgia, serif"
+    font-size="148"
+    font-weight="400"
+    letter-spacing="8"
+    fill="#F5EFE6"
+  >VELOUR</text>
+
+  <!-- HAIR STUDIO subtitle — gold -->
+  <text
+    x="400"
+    y="235"
+    text-anchor="middle"
+    font-family="'Outfit', 'Montserrat', 'Futura', Arial, sans-serif"
+    font-size="22"
+    font-weight="300"
+    letter-spacing="14"
+    fill="#C9A96E"
+  >HAIR STUDIO</text>
+</svg>
