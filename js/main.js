@@ -16,15 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
       .then((r) => r.text())
       .then((html) => {
         navbarPlaceholder.innerHTML = html;
-        initDarkModeToggle();
         initMobileMenu();
         initNavbarScroll();
         setActiveNavLink();
-        injectBreadcrumb();
-        // Initialize cart after navbar is loaded (cart elements are in navbar)
-        if (typeof initGlobalCart === 'function') {
-          initGlobalCart();
-        }
       })
       .catch((err) => console.error("Error loading navbar:", err));
   }
@@ -44,18 +38,19 @@ document.addEventListener("DOMContentLoaded", () => {
   initCounters();
 });
 
+
 /* ───────────────────────────────────────────
-   Dark Mode (Always On)
+   Footer Year
    ─────────────────────────────────────────── */
-function initDarkModeToggle() {
-  const html = document.documentElement;
-  
-  // Force dark mode always
-  html.classList.add("dark");
+function setFooterYear() {
+  const yearEl = document.getElementById("velour-year");
+  if (yearEl) {
+    yearEl.textContent = new Date().getFullYear();
+  }
 }
 
 /* ───────────────────────────────────────────
-   Mobile Menu
+   Mobile Menu Toggle & Animation
    ─────────────────────────────────────────── */
 function initMobileMenu() {
   const btn = document.getElementById("mobile-menu-btn");
@@ -65,47 +60,26 @@ function initMobileMenu() {
   const bar3 = document.getElementById("bar-3");
   const mobileLinks = document.querySelectorAll(".mobile-nav-link");
 
+  if (bar1) { bar1.style.transform = "none"; bar1.style.width = "20px"; }
+  if (bar2) { bar2.style.opacity = "1"; bar2.style.transform = "none"; }
+  if (bar3) { bar3.style.transform = "none"; bar3.style.width = "20px"; }
+
   if (!btn || !menu) return;
 
   let isOpen = false;
 
+  // Toggle menu on button click
   btn.addEventListener("click", () => {
     isOpen = !isOpen;
 
     if (isOpen) {
-      // Open menu
-      menu.classList.remove("pointer-events-none", "opacity-0");
-      menu.classList.add("pointer-events-auto", "opacity-100");
-      document.body.classList.add("overflow-hidden");
-
-      // Animate hamburger to X
-      if (bar1) {
-        bar1.style.transform = "rotate(45deg) translate(2px, 2px)";
-        bar1.style.width = "20px";
-      }
-      if (bar2) {
-        bar2.style.opacity = "0";
-        bar2.style.transform = "translateX(10px)";
-      }
-      if (bar3) {
-        bar3.style.transform = "rotate(-45deg) translate(2px, -2px)";
-        bar3.style.width = "20px";
-      }
-
-      // Stagger animate links
-      mobileLinks.forEach((link, i) => {
-        setTimeout(() => {
-          link.style.opacity = "1";
-          link.style.transform = "translateY(0)";
-          link.style.transition = "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
-        }, 80 + i * 60);
-      });
+      openMenu();
     } else {
       closeMenu();
     }
   });
 
-  // Close on link click
+  // Close menu when clicking a link
   mobileLinks.forEach((link) => {
     if (link.tagName === "A") {
       link.addEventListener("click", () => {
@@ -115,15 +89,47 @@ function initMobileMenu() {
     }
   });
 
+  // Open menu function
+  function openMenu() {
+    // Show menu overlay
+    menu.classList.remove("pointer-events-none", "opacity-0");
+    menu.classList.add("pointer-events-auto", "opacity-100");
+    document.body.classList.add("overflow-hidden");
+
+    // Animate hamburger to X
+    if (bar1) {
+      bar1.style.transform = "rotate(45deg) translate(2px, 2px)";
+      bar1.style.width = "20px";
+    }
+    if (bar2) {
+      bar2.style.opacity = "0";
+      bar2.style.transform = "translateX(10px)";
+    }
+    if (bar3) {
+      bar3.style.transform = "rotate(-45deg) translate(2px, -2px)";
+      bar3.style.width = "20px";
+    }
+
+    // Stagger animate links (fade in from bottom)
+    mobileLinks.forEach((link, i) => {
+      setTimeout(() => {
+        link.style.opacity = "1";
+        link.style.transform = "translateY(0)";
+        link.style.transition = "all 0.4s cubic-bezier(0.16, 1, 0.3, 1)";
+      }, 80 + i * 60); // 60ms delay between each link
+    });
+  }
+
+  // Close menu function
   function closeMenu() {
-    // Reset links
+    // Reset links (fade out)
     mobileLinks.forEach((link) => {
       link.style.opacity = "0";
       link.style.transform = "translateY(16px)";
       link.style.transition = "all 0.2s ease";
     });
 
-    // Reset hamburger
+    // Reset hamburger icon
     if (bar1) {
       bar1.style.transform = "none";
       bar1.style.width = "20px";
@@ -137,6 +143,7 @@ function initMobileMenu() {
       bar3.style.width = "20px";
     }
 
+    // Hide menu overlay after animation
     setTimeout(() => {
       menu.classList.add("pointer-events-none", "opacity-0");
       menu.classList.remove("pointer-events-auto", "opacity-100");
@@ -146,14 +153,13 @@ function initMobileMenu() {
 }
 
 /* ───────────────────────────────────────────
-   Navbar Scroll Effect
+   Navbar Scroll Effect (Glass Morphism)
    ─────────────────────────────────────────── */
 function initNavbarScroll() {
   const header = document.getElementById("site-header");
   if (!header) return;
 
-  let lastScroll = 0;
-  const scrollThreshold = 50;
+  const scrollThreshold = 50; // Pixels to scroll before effect triggers
 
   window.addEventListener("scroll", () => {
     const currentScroll = window.scrollY;
@@ -175,8 +181,6 @@ function initNavbarScroll() {
         "shadow-[0_1px_20px_rgba(0,0,0,0.06)]"
       );
     }
-
-    lastScroll = currentScroll;
   });
 }
 
@@ -189,6 +193,8 @@ function setActiveNavLink() {
 
   navLinks.forEach((link) => {
     const href = link.getAttribute("href");
+    
+    // Check if current page matches link href
     if (href && currentPath.endsWith(href.replace(/^\//, ""))) {
       // Add gold underline to active link
       const underline = link.querySelector("span");
@@ -196,97 +202,12 @@ function setActiveNavLink() {
         underline.classList.remove("w-0");
         underline.classList.add("w-3/4");
       }
+      
+      // Change text color for active link
       link.classList.remove("text-ink/70", "dark:text-cream/70");
       link.classList.add("text-plum", "dark:text-gold");
     }
   });
-}
-
-/* ───────────────────────────────────────────
-   Footer Year
-   ─────────────────────────────────────────── */
-function setFooterYear() {
-  const yearEl = document.getElementById("velour-year");
-  if (yearEl) {
-    yearEl.textContent = new Date().getFullYear();
-  }
-}
-
-/* ───────────────────────────────────────────
-   Breadcrumb Injection
-   ─────────────────────────────────────────── */
-function injectBreadcrumb() {
-  // Page label map: filename → display name
-  const PAGE_LABELS = {
-    "index.html":       "Home",
-    "shop.html":        "Shop",
-    "gallery.html":     "Gallery",
-    "about.html":       "About Us",
-    "team.html":        "Our Team",
-    "blog.html":        "Journal",
-    "blog-post.html":   "Article",
-    "contact.html":     "Contact",
-    "careers.html":     "Careers",
-    "services.html":    "Services",
-    "booking.html":     "Book Appointment",
-    "cart.html":        "Cart",
-    "checkout.html":    "Checkout",
-    "branches.html":    "Branches",
-    "product.html":     "Product",
-    "404.html":         "Not Found",
-    "order-success.html": "Order Confirmed",
-  };
-
-  // Parent map: child → parent filename (for nested pages)
-  const PARENT_MAP = {
-    "blog-post.html":  { href: "/pages/blog.html",    label: "Journal" },
-    "product.html":    { href: "/pages/shop.html",     label: "Shop" },
-    "checkout.html":   { href: "/pages/cart.html",     label: "Cart" },
-    "order-success.html": { href: "/pages/checkout.html", label: "Checkout" },
-  };
-
-  const path = window.location.pathname;
-  const filename = path.split("/").pop() || "index.html";
-
-  // Don't show breadcrumb on homepage
-  if (filename === "index.html" || path === "/" || path === "") return;
-
-  const currentLabel = PAGE_LABELS[filename] || filename.replace(".html", "").replace(/-/g, " ");
-  const parent = PARENT_MAP[filename] || null;
-
-  // Build crumbs array: [{href, label}, ...]
-  const crumbs = [{ href: "/index.html", label: "Home", isHome: true }];
-  if (parent) crumbs.push({ href: parent.href, label: parent.label });
-  crumbs.push({ href: null, label: currentLabel, current: true });
-
-  // Home icon SVG
-  const homeIcon = `<span class="bc-home-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H5a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></span>`;
-
-  // Build HTML
-  const items = crumbs.map((crumb, i) => {
-    const isLast = i === crumbs.length - 1;
-    const sep = i > 0 ? `<span class="bc-sep" aria-hidden="true"></span>` : "";
-
-    if (isLast) {
-      return `${sep}<li><span aria-current="page">${crumb.label}</span></li>`;
-    }
-
-    const icon = crumb.isHome ? homeIcon : "";
-    return `${sep}<li><a href="${crumb.href}">${icon}${crumb.label}</a></li>`;
-  }).join("");
-
-  const breadcrumbHTML = `
-    <div class="velour-breadcrumb-wrap">
-      <nav class="velour-breadcrumb" aria-label="Breadcrumb">
-        <ol>${items}</ol>
-      </nav>
-    </div>`;
-
-  // Insert after the navbar spacer (inside navbar-placeholder)
-  const spacer = document.getElementById("navbar-spacer");
-  if (spacer) {
-    spacer.insertAdjacentHTML("afterend", breadcrumbHTML);
-  }
 }
 
 /* ───────────────────────────────────────────

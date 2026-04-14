@@ -49,7 +49,7 @@ html {
 
 /* Light mode: On hero (transparent background) - use cream/light text for contrast over dark overlay */
 @media (prefers-color-scheme: light) {
-  #site-header:not(.bg-cream\\/85):not([class*="bg-cream"]) {
+  #site-header:not(.bg-cream\/85):not([class*="bg-cream"]) {
     --navbar-logo-color: #F5EFE6;
     --navbar-link-color: #F5EFE6;
     --navbar-link-hover: #C9A96E;
@@ -57,44 +57,44 @@ html {
   }
 
   /* Logo text on hero (light/cream) */
-  #site-header:not(.bg-cream\\/85) .text-plum {
+  #site-header:not(.bg-cream\/85) .text-plum {
     color: #F5EFE6;
   }
 
   /* Nav links on hero (light/cream with gold hover) */
-  #site-header:not(.bg-cream\\/85) .nav-link {
+  #site-header:not(.bg-cream\/85) .nav-link {
     color: #F5EFE6;
   }
 
-  #site-header:not(.bg-cream\\/85) .nav-link:hover {
+  #site-header:not(.bg-cream\/85) .nav-link:hover {
     color: #C9A96E;
   }
 
   /* Toggle button on hero (light/cream) */
-  #site-header:not(.bg-cream\\/85) .theme-toggle,
-  #site-header:not(.bg-cream\\/85) [class*="toggle"] {
+  #site-header:not(.bg-cream\/85) .theme-toggle,
+  #site-header:not(.bg-cream\/85) [class*="toggle"] {
     color: #F5EFE6;
   }
 
   /* Scrolled state in light mode - dark text on light background */
-  #site-header.bg-cream\\/85 .text-plum,
+  #site-header.bg-cream\/85 .text-plum,
   #site-header[class*="bg-cream"] .text-plum {
     color: #6B3F5E;
   }
 
-  #site-header.bg-cream\\/85 .nav-link,
+  #site-header.bg-cream\/85 .nav-link,
   #site-header[class*="bg-cream"] .nav-link {
     color: #1a0f17;
   }
 
-  #site-header.bg-cream\\/85 .nav-link:hover,
+  #site-header.bg-cream\/85 .nav-link:hover,
   #site-header[class*="bg-cream"] .nav-link:hover {
     color: #6B3F5E;
   }
 
-  #site-header.bg-cream\\/85 .theme-toggle,
+  #site-header.bg-cream\/85 .theme-toggle,
   #site-header[class*="bg-cream"] .theme-toggle,
-  #site-header.bg-cream\\/85 [class*="toggle"],
+  #site-header.bg-cream\/85 [class*="toggle"],
   #site-header[class*="bg-cream"] [class*="toggle"] {
     color: #1a0f17;
   }
@@ -3625,6 +3625,12 @@ html.dark #site-header[class*="bg-cream"] .nav-link:hover {
   font-family: 'Fraunces', serif; font-size: 26px; font-weight: 300; color: #F5EFE6;
 }
 .sp-cart-summary-sep { height: 1px; background: rgba(201,169,110,0.1); margin: 4px 0; }
+.sp-cart-view-full {
+  display: block; text-align: center; font-size: 12px; font-weight: 500;
+  color: rgba(245, 239, 230, 0.5); text-decoration: none; padding: 8px;
+  letter-spacing: 0.5px; transition: color 0.2s ease; margin-bottom: 8px;
+}
+.sp-cart-view-full:hover { color: #C9A96E; }
 .sp-cart-checkout {
   width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
   background: #C9A96E; color: #1a0f17; border: none; border-radius: 14px;
@@ -3665,6 +3671,18 @@ html.dark #site-header[class*="bg-cream"] .nav-link:hover {
   border: 2px solid #F5EFE6;
 }
 .dark .sp-cart-fab-badge { background: #6B3F5E; color: #F5EFE6; border-color: #0D0A0E; }
+
+/* ── Navbar cart badge ── */
+.nav-cart-badge {
+  position: absolute; top: -2px; right: -2px;
+  min-width: 18px; height: 18px; border-radius: 100px; padding: 0 4px;
+  display: none; align-items: center; justify-content: center;
+  background: #D4A5A5; color: #1a0f17;
+  font-size: 10px; font-weight: 700; font-family: 'Outfit', sans-serif;
+  border: 2px solid #F5EFE6;
+}
+.dark .nav-cart-badge { background: #6B3F5E; color: #F5EFE6; border-color: #0D0A0E; }
+.nav-cart-badge:not([hidden]) { display: flex; }
 
 /* ── Toast ── */
 .sp-toast {
@@ -3731,33 +3749,46 @@ html.dark #site-header[class*="bg-cream"] .nav-link:hover {
   color: rgba(245, 239, 230, 0.75) !important;
 }
 
+/* Dark mode — Logo must be solid white on light-hero pages */
+.dark .light-hero-page #site-header:not([class*="bg-cream"]) .font-fraunces,
+.dark .light-hero-page #site-header:not([class*="bg-cream"]) [class*="logo"],
+html.dark .light-hero-page #site-header:not([class*="bg-cream"]) .font-fraunces,
+html.dark .light-hero-page #site-header:not([class*="bg-cream"]) [class*="logo"] {
+  color: #FFFFFF !important;
+  background: none !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+}
+
+/* Dark mode — Separator pipe between "Velour" and "Hair Studio" */
+.dark .light-hero-page #site-header:not([class*="bg-cream"]) .w-\[1px\],
+html.dark .light-hero-page #site-header:not([class*="bg-cream"]) .w-\[1px\] {
+  background: rgba(201, 169, 110, 0.4) !important;
+}
+
+/* Dark mode — "Hair Studio" tagline text */
+.dark .light-hero-page #site-header:not([class*="bg-cream"]) .text-\[10px\],
+html.dark .light-hero-page #site-header:not([class*="bg-cream"]) .text-\[10px\] {
+  color: rgba(245, 239, 230, 0.4) !important;
+}
+
 
 /* ═══════════════════════════════════════════════════════════════
-   BREADCRUMB — Premium luxury trail, mobile-first
+   BREADCRUMB — Clean minimal trail, mobile-first, no icons
    ═══════════════════════════════════════════════════════════════ */
 
+/* ── Wrapper ── */
+.velour-breadcrumb-wrap {
+  padding: 14px 0 6px;
+  background: transparent;
+}
+
+/* ── Nav container ── */
 .velour-breadcrumb {
   position: relative;
   z-index: 10;
-  padding: 14px 24px 0;
+  padding: 0 16px;
   max-width: 1200px;
   margin: 0 auto;
-}
-
-/* Wrapper that sits between navbar spacer and page hero */
-.velour-breadcrumb-wrap {
-  padding: 18px 0 8px;
-  background: transparent;
-}
-
-/* On light-hero pages: visible immediately */
-.light-hero-page .velour-breadcrumb-wrap {
-  background: transparent;
-}
-
-/* On dark-hero pages (index, branches): subtle dark tint */
-body:not(.light-hero-page) .velour-breadcrumb-wrap {
-  background: transparent;
 }
 
 /* ── Trail list ── */
@@ -3778,9 +3809,34 @@ body:not(.light-hero-page) .velour-breadcrumb-wrap {
   font-family: 'Outfit', sans-serif;
   font-size: 11px;
   font-weight: 500;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   white-space: nowrap;
+  line-height: 1;
+}
+
+/* ── Slash separator ── */
+.velour-breadcrumb .bc-sep {
+  padding: 0 8px;
+  font-size: 10px;
+  font-weight: 300;
+  letter-spacing: 0;
+  text-transform: none;
+  user-select: none;
+  opacity: 0.35;
+}
+
+/* Light-hero page separators */
+.light-hero-page .velour-breadcrumb .bc-sep {
+  color: rgba(26, 15, 23, 0.4);
+}
+
+body:not(.light-hero-page) .velour-breadcrumb .bc-sep {
+  color: rgba(245, 239, 230, 0.35);
+}
+
+.dark .light-hero-page .velour-breadcrumb .bc-sep {
+  color: rgba(245, 239, 230, 0.3);
 }
 
 /* ── Link crumbs ── */
@@ -3790,18 +3846,36 @@ body:not(.light-hero-page) .velour-breadcrumb-wrap {
   position: relative;
 }
 
-/* Light-hero pages: dark ink links */
+/* Subtle underline on hover */
+.velour-breadcrumb a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.25s ease;
+}
+
+.velour-breadcrumb a:hover::after {
+  width: 100%;
+}
+
+/* Light-hero: dark text links */
 .light-hero-page .velour-breadcrumb a {
   color: rgba(26, 15, 23, 0.45);
 }
+
 .light-hero-page .velour-breadcrumb a:hover {
   color: #6B3F5E;
 }
 
-/* Dark-hero pages: cream links */
+/* Dark-hero pages: cream text links */
 body:not(.light-hero-page) .velour-breadcrumb a {
   color: rgba(245, 239, 230, 0.45);
 }
+
 body:not(.light-hero-page) .velour-breadcrumb a:hover {
   color: #C9A96E;
 }
@@ -3810,6 +3884,7 @@ body:not(.light-hero-page) .velour-breadcrumb a:hover {
 .dark .light-hero-page .velour-breadcrumb a {
   color: rgba(245, 239, 230, 0.4);
 }
+
 .dark .light-hero-page .velour-breadcrumb a:hover {
   color: #C9A96E;
 }
@@ -3831,77 +3906,30 @@ body:not(.light-hero-page) .velour-breadcrumb [aria-current="page"] {
   color: #C9A96E;
 }
 
-/* ── Gold diamond separator ── */
-.velour-breadcrumb .bc-sep {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 20px;
-  flex-shrink: 0;
-}
-
-.velour-breadcrumb .bc-sep::before {
-  content: '';
-  display: block;
-  width: 4px;
-  height: 4px;
-  border-radius: 1px;
-  transform: rotate(45deg);
-}
-
-.light-hero-page .velour-breadcrumb .bc-sep::before {
-  background: rgba(107, 63, 94, 0.3);
-}
-
-body:not(.light-hero-page) .velour-breadcrumb .bc-sep::before {
-  background: rgba(201, 169, 110, 0.3);
-}
-
-.dark .light-hero-page .velour-breadcrumb .bc-sep::before {
-  background: rgba(201, 169, 110, 0.3);
-}
-
-/* ── Home icon ── */
-.velour-breadcrumb .bc-home-icon {
-  width: 12px;
-  height: 12px;
-  display: inline-block;
-  vertical-align: middle;
-  margin-right: 4px;
-  flex-shrink: 0;
-}
-
-.velour-breadcrumb .bc-home-icon svg {
-  width: 100%;
-  height: 100%;
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-/* ── Spacing below breadcrumb ── */
-
-/* ── Mobile ── */
-@media (max-width: 640px) {
+/* ── Tablet+ ── */
+@media (min-width: 641px) {
   .velour-breadcrumb {
-    padding: 12px 16px 0;
+    padding: 0 24px;
   }
 
   .velour-breadcrumb li {
-    font-size: 10px;
-    letter-spacing: 0.08em;
+    font-size: 11px;
+    letter-spacing: 0.12em;
   }
 
   .velour-breadcrumb .bc-sep {
-    width: 16px;
+    padding: 0 10px;
+  }
+
+  .velour-breadcrumb-wrap {
+    padding: 18px 0 8px;
   }
 }
 
 /* ── Reduced motion ── */
 @media (prefers-reduced-motion: reduce) {
-  .velour-breadcrumb a {
+  .velour-breadcrumb a,
+  .velour-breadcrumb a::after {
     transition: none;
   }
 }

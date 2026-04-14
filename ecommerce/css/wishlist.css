@@ -1,0 +1,464 @@
+/* ═══════════════════════════════════════════════════════════════
+   VELOUR HAIR STUDIO — Wishlist Page Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Wishlist Wrapper ──────────────────────────────────────── */
+.wishlist-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--ec-space-xl) var(--ec-space-lg) var(--ec-space-3xl);
+}
+
+/* ── Page Header ───────────────────────────────────────────── */
+.wishlist-header {
+  text-align: center;
+  margin-bottom: var(--ec-space-xl);
+  padding-bottom: var(--ec-space-lg);
+  border-bottom: 0.5px solid var(--ec-divider);
+}
+
+.wishlist-header__eyebrow {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  color: var(--vl-gold);
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.wishlist-header__eyebrow::before,
+.wishlist-header__eyebrow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 0.5px;
+  background: var(--vl-gold);
+  opacity: 0.4;
+}
+
+.wishlist-header__eyebrow::before {
+  right: calc(100% + 10px);
+}
+
+.wishlist-header__eyebrow::after {
+  left: calc(100% + 10px);
+}
+
+.wishlist-header__title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300;
+  color: var(--ec-text-primary);
+  line-height: 1.15;
+  margin-bottom: 10px;
+}
+
+.wishlist-header__title em {
+  font-style: italic;
+  color: var(--vl-gold);
+}
+
+.wishlist-header__count {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: var(--ec-text-muted);
+  letter-spacing: 0.5px;
+}
+
+/* ── Wishlist Grid ─────────────────────────────────────────── */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+/* ── Wishlist Product Card (extends vl-product-card) ─────── */
+.wishlist-card {
+  position: relative;
+  animation: wishlistCardIn 0.5s var(--ec-ease) both;
+}
+
+.wishlist-card__actions {
+  display: flex;
+  gap: 8px;
+  padding: 0 20px 20px;
+}
+
+.wishlist-card__move-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  border-radius: var(--ec-radius-full);
+  background: var(--ec-btn-primary-bg);
+  color: var(--ec-btn-primary-text);
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  border: none;
+  cursor: pointer;
+  transition: all var(--ec-duration) ease;
+  box-shadow: var(--ec-btn-primary-shadow);
+}
+
+.wishlist-card__move-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(201, 169, 110, 0.45);
+}
+
+.wishlist-card__move-btn:active {
+  transform: scale(0.97);
+}
+
+.wishlist-card__move-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wishlist-card__remove-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 0.5px solid var(--ec-card-border);
+  background: transparent;
+  color: var(--ec-text-muted);
+  cursor: pointer;
+  transition: all var(--ec-duration) ease;
+  flex-shrink: 0;
+}
+
+.wishlist-card__remove-btn:hover {
+  border-color: var(--ec-error);
+  color: var(--ec-error);
+  background: var(--ec-error-light);
+}
+
+.wishlist-card__remove-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Card removal animation ────────────────────────────────── */
+.wishlist-card--removing {
+  animation: wishlistCardOut 0.35s var(--ec-ease) forwards;
+}
+
+@keyframes wishlistCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wishlistCardOut {
+  to {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+}
+
+/* ── Empty State ───────────────────────────────────────────── */
+.wishlist-empty {
+  text-align: center;
+  padding: var(--ec-space-3xl) var(--ec-space-lg);
+}
+
+.wishlist-empty__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto var(--ec-space-lg);
+  opacity: 0.25;
+  color: var(--vl-gold);
+}
+
+.wishlist-empty__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.wishlist-empty__title {
+  font-family: 'Fraunces', serif;
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--ec-text-primary);
+  margin-bottom: 10px;
+}
+
+.wishlist-empty__text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-secondary);
+  max-width: 400px;
+  margin: 0 auto var(--ec-space-lg);
+  line-height: 1.7;
+}
+
+.wishlist-empty__actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Heart Toggle Button (on product cards) ────────────────── */
+.vl-product-card__wishlist-btn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(13, 10, 14, 0.55);
+  backdrop-filter: blur(8px);
+  border: 0.5px solid rgba(245, 239, 230, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
+  transition: all var(--ec-duration) ease;
+}
+
+.vl-product-card__wishlist-btn:hover {
+  background: rgba(13, 10, 14, 0.80);
+  border-color: rgba(201, 169, 110, 0.35);
+  transform: scale(1.1);
+}
+
+.vl-product-card__wishlist-btn svg {
+  width: 17px;
+  height: 17px;
+  stroke: var(--vl-cream);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: all 0.25s ease;
+}
+
+/* Active/wishlisted state */
+.vl-product-card__wishlist-btn.is-wishlisted svg {
+  fill: var(--vl-gold);
+  stroke: var(--vl-gold);
+}
+
+.vl-product-card__wishlist-btn.is-wishlisted {
+  background: rgba(201, 169, 110, 0.18);
+  border-color: rgba(201, 169, 110, 0.35);
+}
+
+/* Heart pop animation */
+@keyframes heartPop {
+  0% {
+    transform: scale(1);
+  }
+
+  30% {
+    transform: scale(1.35);
+  }
+
+  60% {
+    transform: scale(0.95);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.vl-product-card__wishlist-btn.heart-pop svg {
+  animation: heartPop 0.45s var(--ec-ease);
+}
+
+/* ── Product Page Wishlist Button Enhancements ─────────────── */
+.product-wishlist-btn.is-wishlisted {
+  background: rgba(201, 169, 110, 0.15);
+  border-color: var(--vl-gold);
+}
+
+.product-wishlist-btn.is-wishlisted svg {
+  fill: var(--vl-gold);
+  stroke: var(--vl-gold);
+}
+
+/* ── Wishlist Badge (navbar) ───────────────────────────────── */
+.wishlist-count-badge {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: var(--ec-radius-full);
+  background: var(--vl-rose);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+@keyframes wishlistBadgePop {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.35);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.wishlist-badge-pop {
+  animation: wishlistBadgePop 0.35s var(--ec-ease);
+}
+
+/* ── Footer CTA on Wishlist Page ───────────────────────────── */
+.wishlist-footer-cta {
+  text-align: center;
+  margin-top: var(--ec-space-2xl);
+  padding-top: var(--ec-space-xl);
+  border-top: 0.5px solid var(--ec-divider);
+}
+
+.wishlist-footer-cta__text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-secondary);
+  margin-bottom: var(--ec-space-md);
+}
+
+.wishlist-footer-cta__link {
+  color: var(--vl-gold);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity var(--ec-duration) ease;
+}
+
+.wishlist-footer-cta__link:hover {
+  opacity: 0.8;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Responsive — Tablet
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Responsive — Mobile
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  .wishlist-wrap {
+    padding: var(--ec-space-lg) 16px var(--ec-space-2xl);
+  }
+
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+
+  .wishlist-card__actions {
+    padding: 0 16px 16px;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .wishlist-card__remove-btn {
+    width: 100%;
+    border-radius: var(--ec-radius-full);
+    height: 36px;
+  }
+
+  .vl-product-card__wishlist-btn {
+    top: 8px;
+    right: 8px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .vl-product-card__wishlist-btn svg {
+    width: 15px;
+    height: 15px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Responsive — Small Mobile
+   ═══════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .wishlist-card__actions {
+    padding: 0 12px 14px;
+  }
+
+  .wishlist-card__move-btn {
+    font-size: 10px;
+    padding: 9px 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .wishlist-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+/* ── Reduced Motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+
+  .wishlist-card,
+  .wishlist-card--removing,
+  .vl-product-card__wishlist-btn svg,
+  .wishlist-count-badge {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

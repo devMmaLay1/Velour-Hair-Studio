@@ -1,0 +1,604 @@
+/* ═══════════════════════════════════════════════════════════════
+   VELOUR HAIR STUDIO — E-Commerce CSS Variables & Shared Utilities
+   Design tokens that extend the existing Velour brand system
+   ═══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Brand colours (mirrored from tailwind for vanilla CSS use) ── */
+  --vl-plum:          #6B3F5E;
+  --vl-cream:         #F5EFE6;
+  --vl-rose:          #D4A5A5;
+  --vl-gold:          #C9A96E;
+  --vl-ink:           #1a0f17;
+  --vl-dark-bg:       #0D0A0E;
+  --vl-dark-surface:  #1A1220;
+
+  /* ── E-Commerce specific palette ── */
+  --ec-success:       #2f7d57;
+  --ec-success-light: rgba(47, 125, 87, 0.12);
+  --ec-error:         #c94444;
+  --ec-error-light:   rgba(201, 68, 68, 0.12);
+  --ec-warning:       #a56400;
+  --ec-warning-light: rgba(165, 100, 0, 0.12);
+  --ec-info:          #4a7fb5;
+  --ec-info-light:    rgba(74, 127, 181, 0.12);
+
+  /* ── Surface & card tokens (dark mode default) ── */
+  --ec-page-bg:       var(--vl-dark-bg);
+  --ec-surface:       var(--vl-dark-surface);
+  --ec-surface-hover: #221830;
+  --ec-card-bg:       var(--vl-dark-surface);
+  --ec-card-border:   rgba(201, 169, 110, 0.10);
+  --ec-card-border-hover: rgba(201, 169, 110, 0.25);
+
+  /* ── Text tokens ── */
+  --ec-text-primary:  var(--vl-cream);
+  --ec-text-secondary: rgba(245, 239, 230, 0.60);
+  --ec-text-muted:    rgba(245, 239, 230, 0.38);
+  --ec-text-inverse:  var(--vl-ink);
+
+  /* ── Dividers ── */
+  --ec-divider:       rgba(245, 239, 230, 0.08);
+  --ec-divider-strong: rgba(245, 239, 230, 0.15);
+
+  /* ── Button tokens ── */
+  --ec-btn-primary-bg:    linear-gradient(135deg, var(--vl-gold), #d4b87a);
+  --ec-btn-primary-text:  var(--vl-ink);
+  --ec-btn-primary-shadow: 0 4px 16px rgba(201, 169, 110, 0.30);
+  --ec-btn-outline-border: rgba(245, 239, 230, 0.20);
+  --ec-btn-outline-text:   var(--vl-cream);
+
+  /* ── Radius system ── */
+  --ec-radius-sm:   8px;
+  --ec-radius-md:   14px;
+  --ec-radius-lg:   20px;
+  --ec-radius-xl:   28px;
+  --ec-radius-full: 999px;
+
+  /* ── Spacing scale ── */
+  --ec-space-xs:  4px;
+  --ec-space-sm:  8px;
+  --ec-space-md:  16px;
+  --ec-space-lg:  24px;
+  --ec-space-xl:  40px;
+  --ec-space-2xl: 64px;
+  --ec-space-3xl: 100px;
+
+  /* ── Shadow system ── */
+  --ec-shadow-sm:   0 2px 8px rgba(0, 0, 0, 0.12);
+  --ec-shadow-md:   0 8px 24px rgba(0, 0, 0, 0.18);
+  --ec-shadow-lg:   0 16px 48px rgba(0, 0, 0, 0.24);
+  --ec-shadow-glow: 0 0 24px rgba(201, 169, 110, 0.15);
+
+  /* ── Transitions ── */
+  --ec-ease:     cubic-bezier(0.22, 1, 0.36, 1);
+  --ec-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ec-duration: 0.3s;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   Shared Component Styles
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Velour Product Card (used on shop + related products) ─── */
+.vl-product-card {
+  background: var(--ec-card-bg);
+  border: 0.5px solid var(--ec-card-border);
+  border-radius: var(--ec-radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  transition: transform var(--ec-duration) var(--ec-ease),
+              border-color var(--ec-duration) ease,
+              box-shadow var(--ec-duration) ease;
+  cursor: pointer;
+}
+
+.vl-product-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--ec-card-border-hover);
+  box-shadow: var(--ec-shadow-md);
+}
+
+.vl-product-card__image-wrap {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  background: var(--ec-surface);
+}
+
+.vl-product-card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s var(--ec-ease);
+}
+
+.vl-product-card:hover .vl-product-card__image {
+  transform: scale(1.05);
+}
+
+.vl-product-card__badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border-radius: var(--ec-radius-full);
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 2;
+}
+
+.vl-product-card__badge--sale {
+  background: var(--ec-error);
+  color: #fff;
+}
+
+.vl-product-card__badge--new {
+  background: var(--vl-gold);
+  color: var(--vl-ink);
+}
+
+.vl-product-card__badge--best-seller {
+  background: var(--vl-plum);
+  color: var(--vl-cream);
+}
+
+.vl-product-card__badge--value {
+  background: var(--ec-success);
+  color: #fff;
+}
+
+.vl-product-card__quick-add {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(13, 10, 14, 0.70);
+  backdrop-filter: blur(8px);
+  border: 0.5px solid rgba(245, 239, 230, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity var(--ec-duration) ease,
+              transform var(--ec-duration) var(--ec-ease),
+              background var(--ec-duration) ease;
+}
+
+.vl-product-card:hover .vl-product-card__quick-add {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Ensure quick-add is always visible on touch/mobile devices */
+@media (max-width: 768px) {
+  .vl-product-card__quick-add {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.vl-product-card__quick-add:hover {
+  background: var(--vl-gold);
+}
+
+.vl-product-card__quick-add:hover svg {
+  stroke: var(--vl-ink);
+}
+
+.vl-product-card__quick-add svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--vl-cream);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.vl-product-card__body {
+  padding: 20px 20px 22px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.vl-product-card__category {
+  font-family: 'Outfit', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--vl-gold);
+  margin-bottom: 6px;
+  display: block;
+}
+
+.vl-product-card__name {
+  font-family: 'Fraunces', serif;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ec-text-primary);
+  line-height: 1.3;
+  margin-bottom: 10px;
+  transition: color var(--ec-duration) ease;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.vl-product-card:hover .vl-product-card__name {
+  color: var(--vl-gold);
+}
+
+.vl-product-card__price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.vl-product-card__price {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ec-text-primary);
+}
+
+.vl-product-card__old-price {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ec-text-muted);
+  text-decoration: line-through;
+}
+
+/* ── Toast Notification ────────────────────────────────────── */
+.velour-toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(20px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--vl-dark-surface);
+  border: 0.5px solid var(--ec-card-border);
+  border-radius: var(--ec-radius-full);
+  padding: 12px 24px;
+  box-shadow: var(--ec-shadow-lg);
+  z-index: 9999;
+  opacity: 0;
+  transition: opacity 0.35s ease, transform 0.35s var(--ec-ease-out);
+  pointer-events: none;
+}
+
+.velour-toast--visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.velour-toast__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.velour-toast__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.velour-toast--success .velour-toast__icon { color: var(--ec-success); }
+.velour-toast--error .velour-toast__icon   { color: var(--ec-error); }
+.velour-toast--info .velour-toast__icon    { color: var(--ec-info); }
+
+.velour-toast__text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--vl-cream);
+  white-space: nowrap;
+}
+
+/* ── Cart Badge Pop Animation ──────────────────────────────── */
+.cart-count-badge {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: var(--ec-radius-full);
+  background: var(--vl-gold);
+  color: var(--vl-ink);
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  pointer-events: none;
+}
+
+@keyframes cartBadgePop {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.35); }
+  100% { transform: scale(1); }
+}
+
+.cart-badge-pop {
+  animation: cartBadgePop 0.35s var(--ec-ease);
+}
+
+/* ── Shared Button Styles ──────────────────────────────────── */
+.ec-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: none;
+  border-radius: var(--ec-radius-full);
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all var(--ec-duration) ease;
+  white-space: nowrap;
+}
+
+.ec-btn--primary {
+  background: var(--ec-btn-primary-bg);
+  color: var(--ec-btn-primary-text);
+  padding: 14px 32px;
+  box-shadow: var(--ec-btn-primary-shadow);
+}
+
+.ec-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(201, 169, 110, 0.45);
+}
+
+.ec-btn--primary:active {
+  transform: scale(0.97);
+}
+
+.ec-btn--outline {
+  background: transparent;
+  color: var(--ec-btn-outline-text);
+  border: 1px solid var(--ec-btn-outline-border);
+  padding: 13px 32px;
+}
+
+.ec-btn--outline:hover {
+  border-color: rgba(245, 239, 230, 0.40);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.ec-btn--sm {
+  padding: 10px 20px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+}
+
+.ec-btn--icon {
+  padding: 10px;
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.ec-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ── Shared Section Header ─────────────────────────────────── */
+.ec-section-header {
+  text-align: center;
+  margin-bottom: var(--ec-space-2xl);
+}
+
+.ec-eyebrow {
+  display: inline-block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 3.5px;
+  color: var(--vl-gold);
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.ec-eyebrow::before,
+.ec-eyebrow::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 28px;
+  height: 0.5px;
+  background: var(--vl-gold);
+  opacity: 0.4;
+}
+
+.ec-eyebrow::before { right: calc(100% + 10px); }
+.ec-eyebrow::after  { left:  calc(100% + 10px); }
+
+.ec-heading {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 300;
+  color: var(--ec-text-primary);
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.ec-heading em {
+  font-style: italic;
+  color: var(--vl-gold);
+}
+
+.ec-subtext {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-secondary);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ── Placeholder / Skeleton States ─────────────────────────── */
+.ec-skeleton {
+  background: linear-gradient(90deg,
+    var(--ec-surface) 25%,
+    var(--ec-surface-hover) 50%,
+    var(--ec-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: ecSkeletonShimmer 1.5s ease infinite;
+  border-radius: var(--ec-radius-sm);
+}
+
+@keyframes ecSkeletonShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ── Empty State ───────────────────────────────────────────── */
+.ec-empty-state {
+  text-align: center;
+  padding: var(--ec-space-3xl) var(--ec-space-lg);
+}
+
+.ec-empty-state__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--ec-space-lg);
+  opacity: 0.3;
+}
+
+.ec-empty-state__icon svg {
+  width: 100%;
+  height: 100%;
+  stroke: var(--vl-gold);
+  fill: none;
+  stroke-width: 1;
+}
+
+.ec-empty-state__title {
+  font-family: 'Fraunces', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ec-text-primary);
+  margin-bottom: 8px;
+}
+
+.ec-empty-state__text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-secondary);
+  margin-bottom: var(--ec-space-lg);
+}
+
+/* ── Product Image Fallback ────────────────────────────────── */
+.ec-img-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--vl-dark-surface) 0%, #2a1832 100%);
+  color: var(--vl-gold);
+  font-family: 'Fraunces', serif;
+  font-size: 28px;
+  font-style: italic;
+  opacity: 0.5;
+}
+
+/* ── Quantity Stepper ──────────────────────────────────────── */
+.ec-qty-stepper {
+  display: inline-flex;
+  align-items: center;
+  border: 0.5px solid var(--ec-card-border);
+  border-radius: var(--ec-radius-full);
+  overflow: hidden;
+}
+
+.ec-qty-stepper__btn {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--ec-text-secondary);
+  cursor: pointer;
+  font-size: 18px;
+  font-family: 'Outfit', sans-serif;
+  transition: background var(--ec-duration) ease,
+              color var(--ec-duration) ease;
+}
+
+.ec-qty-stepper__btn:hover {
+  background: rgba(201, 169, 110, 0.12);
+  color: var(--vl-gold);
+}
+
+.ec-qty-stepper__btn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.ec-qty-stepper__value {
+  min-width: 36px;
+  text-align: center;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ec-text-primary);
+  border-left: 0.5px solid var(--ec-card-border);
+  border-right: 0.5px solid var(--ec-card-border);
+  padding: 6px 0;
+}
+
+/* ── Responsive Helpers ────────────────────────────────────── */
+@media (max-width: 768px) {
+  .ec-hide-mobile  { display: none !important; }
+}
+
+@media (min-width: 769px) {
+  .ec-hide-desktop { display: none !important; }
+}
+
+/* ── Reduced Motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .vl-product-card,
+  .vl-product-card__image,
+  .vl-product-card__quick-add,
+  .velour-toast,
+  .ec-skeleton {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

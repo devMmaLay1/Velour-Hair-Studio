@@ -1,0 +1,708 @@
+/* ═════════════════════════════════════════════════════════════════
+   VELOUR HAIR STUDIO — Cart Page Styles (Phase 4 — Clean Rebuild)
+   ═════════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────
+   1. OUTER WRAPPER  (single max-width constraint, one padding rule)
+   ────────────────────────────────────────────────────────────────── */
+.cart-wrap {
+  max-width: 1060px;
+  margin: 0 auto;
+  padding: 48px 24px 100px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   2. PAGE HEADER
+   ────────────────────────────────────────────────────────────────── */
+.cart-header {
+  margin-bottom: 32px;
+}
+
+.cart-header__title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(26px, 4vw, 40px);
+  font-weight: 300;
+  color: var(--ec-text-primary);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+}
+
+.cart-header__count {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: var(--ec-text-muted);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   3. FREE SHIPPING BANNER
+   ────────────────────────────────────────────────────────────────── */
+.cart-shipping-bar {
+  background: rgba(201, 169, 110, 0.06);
+  border: 0.5px solid rgba(201, 169, 110, 0.14);
+  border-radius: 12px;
+  padding: 14px 18px;
+  margin-bottom: 24px;
+}
+
+.cart-shipping-bar__text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  color: var(--ec-text-secondary);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+
+.cart-shipping-bar__text strong {
+  color: var(--vl-gold);
+}
+
+.cart-shipping-bar__track {
+  height: 4px;
+  background: var(--ec-divider);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.cart-shipping-bar__fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--vl-gold), #d4b87a);
+  border-radius: 99px;
+  transition: width 0.7s var(--ec-ease);
+  min-width: 4px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   4. LAYOUT  (two-column: items | summary)
+   ────────────────────────────────────────────────────────────────── */
+.cart-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   5. CART ITEMS LIST
+   ────────────────────────────────────────────────────────────────── */
+.cart-items {
+  border: 0.5px solid var(--ec-card-border);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+/* Single item row */
+.cart-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 20px;
+  background: var(--ec-surface);
+  border-bottom: 0.5px solid var(--ec-divider);
+  transition: background 0.2s ease;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-item:hover {
+  background: var(--ec-surface-hover);
+}
+
+/* Remove animation */
+.cart-item--removing {
+  overflow: hidden;
+  animation: itemSlideOut 0.3s ease forwards;
+  pointer-events: none;
+}
+@keyframes itemSlideOut {
+  to { opacity: 0; max-height: 0; padding: 0; border-width: 0; }
+}
+
+/* Enter animation */
+.cart-item--in {
+  animation: itemSlideIn 0.35s var(--ec-ease) both;
+}
+@keyframes itemSlideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ── Image ── */
+.cart-item__img {
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: var(--ec-card-bg);
+  border: 0.5px solid var(--ec-card-border);
+  flex-shrink: 0;
+}
+
+.cart-item__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Info ── */
+.cart-item__info {
+  min-width: 0;
+}
+
+.cart-item__name {
+  font-family: 'Fraunces', serif;
+  font-size: 15px;
+  font-weight: 400;
+  color: var(--ec-text-primary);
+  text-decoration: none;
+  display: block;
+  margin-bottom: 3px;
+  line-height: 1.3;
+  /* Truncate long names gracefully */
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  transition: color 0.2s ease;
+}
+
+.cart-item__name:hover {
+  color: var(--vl-gold);
+}
+
+.cart-item__variant {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  color: var(--ec-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  display: block;
+}
+
+/* Qty stepper row */
+.cart-item__qty-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
+}
+
+/* Compact stepper override specifically for cart rows */
+.cart-item__qty-row .ec-qty-stepper {
+  height: 32px;
+}
+
+.cart-item__qty-row .ec-qty-stepper__btn {
+  width: 32px;
+  height: 32px;
+  font-size: 16px;
+}
+
+.cart-item__qty-row .ec-qty-stepper__value {
+  min-width: 34px;
+  font-size: 13px;
+  padding: 0;
+  line-height: 32px;
+}
+
+/* ── Right controls (price + remove) ── */
+.cart-item__right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.cart-item__price {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--ec-text-primary);
+  white-space: nowrap;
+}
+
+.cart-item__remove-btn {
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  color: var(--ec-text-muted);
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cart-item__remove-btn:hover {
+  background: var(--ec-error-light);
+  color: var(--ec-error);
+}
+
+.cart-item__remove-btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   6. FOOTER ROW (back link + clear)
+   ────────────────────────────────────────────────────────────────── */
+.cart-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 4px 0;
+}
+
+.cart-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--ec-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.cart-back-link svg {
+  width: 15px;
+  height: 15px;
+  transition: transform 0.2s var(--ec-ease);
+}
+
+.cart-back-link:hover {
+  color: var(--vl-gold);
+}
+
+.cart-back-link:hover svg {
+  transform: translateX(-3px);
+}
+
+.cart-clear-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--ec-text-muted);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.cart-clear-btn svg {
+  width: 13px;
+  height: 13px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.cart-clear-btn:hover {
+  background: var(--ec-error-light);
+  color: var(--ec-error);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   7. ORDER SUMMARY SIDEBAR
+   ────────────────────────────────────────────────────────────────── */
+.cart-summary {
+  background: var(--ec-surface);
+  border: 0.5px solid var(--ec-card-border);
+  border-radius: 20px;
+  padding: 24px;
+  position: sticky;
+  top: 96px;    /* sits just below the 73px navbar + breathing room */
+}
+
+/* Top accent line */
+.cart-summary::before {
+  content: '';
+  display: block;
+  height: 2px;
+  margin: -24px -24px 20px;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(90deg, var(--vl-plum), var(--vl-gold), var(--vl-plum));
+  opacity: 0.55;
+}
+
+.cart-summary__title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--ec-text-primary);
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 0.5px solid var(--ec-divider);
+}
+
+.cart-summary__line {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 9px 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-secondary);
+}
+
+.cart-summary__line span:last-child {
+  font-weight: 500;
+  color: var(--ec-text-primary);
+}
+
+.cart-summary__line--total {
+  margin-top: 8px;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--ec-divider-strong);
+}
+
+.cart-summary__line--total span:first-child {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ec-text-primary);
+}
+
+.cart-summary__line--total span:last-child {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--vl-gold);
+}
+
+.cart-summary__note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  color: var(--ec-text-muted);
+  margin: 16px 0;
+  padding: 10px 12px;
+  background: rgba(201,169,110,0.04);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.cart-summary__note svg {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  stroke: var(--vl-gold);
+  stroke-width: 1.8;
+}
+
+.cart-summary__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart-summary__actions .ec-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+.cart-checkout-btn {
+  padding: 14px 20px;
+  font-size: 12px;
+}
+
+/* ── Trust Badges under summary ── */
+.cart-trust {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--ec-divider);
+}
+
+.cart-trust__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--ec-text-muted);
+}
+
+.cart-trust__item svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--vl-gold);
+  fill: none;
+  stroke-width: 1.5;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   8. EMPTY STATE
+   ────────────────────────────────────────────────────────────────── */
+.cart-empty {
+  text-align: center;
+  max-width: 440px;
+  margin: 60px auto 0;
+  padding-bottom: 60px;
+}
+
+.cart-empty__icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  color: var(--vl-gold);
+  opacity: 0.35;
+}
+
+.cart-empty__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.cart-empty__title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 300;
+  color: var(--ec-text-primary);
+  margin-bottom: 10px;
+}
+
+.cart-empty__text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-secondary);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.cart-empty__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-empty__actions .ec-btn {
+  min-width: 200px;
+}
+
+/* Suggested products */
+#cart-suggestions {
+  margin-top: 48px;
+}
+
+.cart-suggest-label {
+  display: block;
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--vl-gold);
+  margin-bottom: 20px;
+}
+
+.cart-suggest-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  text-align: left;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   9. SKELETON PLACEHOLDER LAYOUT
+   ────────────────────────────────────────────────────────────────── */
+.cart-skeleton__header {
+  margin-bottom: 32px;
+}
+
+.cart-skeleton__body {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 32px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   10. REMOVE DIALOG
+   ────────────────────────────────────────────────────────────────── */
+.cart-dialog-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(13, 10, 14, 0.7);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  animation: dialogFadeIn 0.2s ease;
+}
+
+@keyframes dialogFadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+.cart-dialog {
+  background: var(--ec-surface);
+  border: 0.5px solid var(--ec-card-border);
+  border-radius: 20px;
+  padding: 32px;
+  max-width: 360px;
+  width: 100%;
+  box-shadow: var(--ec-shadow-lg);
+  animation: dialogSlideIn 0.25s var(--ec-ease-out);
+}
+
+@keyframes dialogSlideIn {
+  from { opacity: 0; transform: scale(0.94) translateY(8px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.cart-dialog__title {
+  font-family: 'Fraunces', serif;
+  font-size: 20px;
+  font-weight: 300;
+  color: var(--ec-text-primary);
+  margin-bottom: 8px;
+}
+
+.cart-dialog__text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: var(--ec-text-secondary);
+  line-height: 1.65;
+  margin-bottom: 24px;
+}
+
+.cart-dialog__btns {
+  display: flex;
+  gap: 10px;
+}
+
+.cart-dialog__btns .ec-btn {
+  flex: 1;
+}
+
+.cart-dialog__confirm {
+  flex: 1;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--ec-btn-primary-text);
+  background: var(--ec-btn-primary-bg);
+  box-shadow: var(--ec-btn-primary-shadow);
+  border: none;
+  border-radius: 99px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.cart-dialog__confirm:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(201, 169, 110, 0.45);
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   11. RESPONSIVE — TABLET ≤ 860px
+   ────────────────────────────────────────────────────────────────── */
+@media (max-width: 860px) {
+  .cart-layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* On tablet/mobile the summary goes below items */
+  .cart-summary {
+    position: static;   /* unstick — no more navbar overlap */
+  }
+
+  .cart-skeleton__body {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-suggest-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   12. RESPONSIVE — MOBILE ≤ 560px
+   ────────────────────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+  .cart-wrap {
+    padding: 24px 16px 80px;
+  }
+
+  .cart-item {
+    /* Stack: image | info block on its own row, price+remove on line below info */
+    grid-template-columns: 68px 1fr;
+    gap: 12px;
+    padding: 14px 14px;
+  }
+
+  /* Move the right-col (price + remove) to sit under the info, spanning col 2 */
+  .cart-item__right {
+    grid-column: 2;
+    grid-row: 2;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .cart-trust {
+    gap: 12px;
+  }
+
+  .cart-suggest-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-footer-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   13. REDUCED MOTION
+   ────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .cart-item--removing,
+  .cart-item--in,
+  .cart-dialog,
+  .cart-dialog-overlay,
+  .cart-shipping-bar__fill {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}

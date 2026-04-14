@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Velour Salon Ecommerce Implementation Roadmap</title>
+  <style>
+    :root {
+      --plum: #6B3F5E;
+      --cream: #F5EFE6;
+      --rose: #D4A5A5;
+      --gold: #C9A96E;
+      --ink: #1a0f17;
+      --dark-bg: #0D0A0E;
+      --dark-surface: #1A1220;
+      --border: rgba(107, 63, 94, 0.16);
+      --muted: rgba(26, 15, 23, 0.72);
+      --ok: #2f7d57;
+      --warn: #a56400;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #fffaf4 0%, var(--cream) 100%);
+      color: var(--ink);
+      line-height: 1.6;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .hero {
+      background: radial-gradient(circle at top right, rgba(201,169,110,0.18), transparent 28%),
+                  linear-gradient(135deg, var(--dark-bg), var(--dark-surface));
+      color: white;
+      border-radius: 28px;
+      padding: 40px 28px;
+      box-shadow: 0 24px 60px rgba(13, 10, 14, 0.24);
+      margin-bottom: 28px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    h1, h2, h3, h4 { margin: 0 0 12px; }
+    h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      line-height: 1.05;
+      font-weight: 400;
+    }
+    h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      color: var(--plum);
+      font-weight: 400;
+      margin-top: 18px;
+    }
+    h3 {
+      color: var(--plum);
+      font-size: 1.1rem;
+    }
+
+    p { margin: 0 0 14px; }
+    .muted { color: rgba(255,255,255,0.78); }
+    .lead { max-width: 820px; font-size: 1.05rem; }
+
+    .toc, .card, .phase, .note, .tree, .stack, .flow, .deliverable {
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(8px);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 12px 32px rgba(107, 63, 94, 0.08);
+    }
+
+    .toc {
+      padding: 22px;
+      margin-bottom: 28px;
+    }
+
+    .toc a {
+      color: var(--plum);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+    .card, .phase, .note, .tree, .stack, .flow, .deliverable {
+      padding: 22px;
+      margin-bottom: 18px;
+    }
+
+    ul, ol { margin: 10px 0 0 20px; padding: 0; }
+    li { margin-bottom: 8px; }
+
+    .badge {
+      display: inline-block;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(107, 63, 94, 0.08);
+      color: var(--plum);
+      font-size: 12px;
+      font-weight: 700;
+      margin: 4px 8px 0 0;
+    }
+
+    .tree code, .stack code {
+      display: block;
+      white-space: pre-wrap;
+      font-family: "Courier New", monospace;
+      background: #fff;
+      border: 1px solid rgba(107,63,94,0.12);
+      padding: 16px;
+      border-radius: 16px;
+      color: #2c1c28;
+      font-size: 0.93rem;
+    }
+
+    .flow-steps {
+      display: grid;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .flow-step {
+      border-left: 4px solid var(--gold);
+      background: #fff;
+      border-radius: 14px;
+      padding: 14px 16px;
+    }
+
+    .phase-number {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--plum), #855877);
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .status-ok { color: var(--ok); font-weight: 700; }
+    .status-warn { color: var(--warn); font-weight: 700; }
+
+    .footer {
+      margin-top: 32px;
+      text-align: center;
+      color: rgba(26,15,23,0.66);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 900px) {
+      .grid.two, .grid.three { grid-template-columns: 1fr; }
+      .hero { padding: 28px 20px; }
+      .page { padding: 20px 14px 56px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">Velour Salon Store Roadmap</div>
+      <h1>Ecommerce implementation sitemap and build plan</h1>
+      <p class="lead muted">
+        This roadmap is focused only on the ecommerce side of the salon site. It starts from the existing shop page and expands it into a complete store system with product listing, product detail, cart, checkout, payment, and order success flow.
+      </p>
+      <div>
+        <span class="badge">Start from shop page</span>
+        <span class="badge">HTML / CSS / JS friendly</span>
+        <span class="badge">Salon product store only</span>
+        <span class="badge">Implementation-first</span>
+      </div>
+    </section>
+
+    <section class="toc">
+      <h3>Sections</h3>
+      <div class="grid two">
+        <div>
+          <p><a href="#goal">1. Project goal</a></p>
+          <p><a href="#sitemap">2. Ecommerce sitemap</a></p>
+          <p><a href="#journey">3. User journey</a></p>
+          <p><a href="#pages">4. Page-by-page features</a></p>
+        </div>
+        <div>
+          <p><a href="#structure">5. File structure</a></p>
+          <p><a href="#data">6. Data model</a></p>
+          <p><a href="#phases">7. Build phases</a></p>
+          <p><a href="#deliverables">8. Final definition of done</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="goal" class="card">
+      <h2>1. Project goal</h2>
+      <p>
+        Turn the salon website into a complete branded store experience where users can browse salon products, filter by category, open a product page, add items to cart, review cart contents, complete checkout, pay, and land on a successful order confirmation page.
+      </p>
+      <p><strong>Main objective:</strong> make the ecommerce side feel intentional, premium, and fully connected to the Velour brand instead of feeling like one isolated shop screen.</p>
+    </section>
+
+    <section id="sitemap" class="tree">
+      <h2>2. Ecommerce sitemap</h2>
+      <p>This is the recommended sitemap starting from the shop page.</p>
+      <code>Shop / Store (pages/shop.html)
+├── Product Category Filters
+│   ├── Hair Care
+│   ├── Oils & Serums
+│   ├── Treatments
+│   ├── Styling Tools
+│   ├── Accessories
+│   └── Merch / Gift Items
+├── Search / Sort / Filter State
+├── Product Grid
+│   └── Product Card → Product Details Page
+├── Quick Add to Cart
+└── Cart Entry Point
+
+Product Details (pages/product.html)
+├── Product Image Gallery
+├── Product Title + Price + Description
+├── Variant Selector (size / pack / color if needed)
+├── Quantity Stepper
+├── Add to Cart
+├── Related Products
+└── Back to Shop
+
+Cart (pages/cart.html or cart drawer)
+├── Cart Item List
+├── Quantity Update
+├── Remove Item
+├── Subtotal
+├── Shipping Note
+├── Promo Code (optional later)
+└── Proceed to Checkout
+
+Checkout (pages/checkout.html)
+├── Contact Details
+├── Shipping / Delivery Details
+├── Order Summary
+├── Payment Summary
+├── Paystack Payment Button
+└── Checkout Validation
+
+Order Success (pages/order-success.html)
+├── Success Message
+├── Order Summary
+├── Delivery / Pickup Message
+├── Continue Shopping Button
+└── Order Reference / Confirmation State</code>
+    </section>
+
+    <section id="journey" class="flow">
+      <h2>3. User journey</h2>
+      <div class="flow-steps">
+        <div class="flow-step"><strong>Step 1:</strong> User lands on <strong>Shop</strong> and sees premium product cards.</div>
+        <div class="flow-step"><strong>Step 2:</strong> User filters or searches products by category, price, or product name.</div>
+        <div class="flow-step"><strong>Step 3:</strong> User opens a product detail page to see full information.</div>
+        <div class="flow-step"><strong>Step 4:</strong> User selects quantity and variant, then adds to cart.</div>
+        <div class="flow-step"><strong>Step 5:</strong> User reviews the cart and adjusts quantities.</div>
+        <div class="flow-step"><strong>Step 6:</strong> User proceeds to checkout, fills delivery details, and pays.</div>
+        <div class="flow-step"><strong>Step 7:</strong> User lands on order success page and can continue shopping.</div>
+      </div>
+    </section>
+
+    <section id="pages">
+      <h2>4. Page-by-page implementation plan</h2>
+
+      <div class="grid two">
+        <article class="card">
+          <h3>4.1 Shop page</h3>
+          <p><strong>Purpose:</strong> main product discovery page.</p>
+          <ul>
+            <li>Hero section with store intro and short salon retail message</li>
+            <li>Category filter tabs</li>
+            <li>Search bar</li>
+            <li>Sort dropdown: newest, price low to high, price high to low, featured</li>
+            <li>Product grid with image, name, category, price, badge, add-to-cart button</li>
+            <li>Empty state when no products match filter</li>
+            <li>Cart icon with live cart count</li>
+          </ul>
+          <p class="status-ok">Required on day one</p>
+        </article>
+
+        <article class="card">
+          <h3>4.2 Product details page</h3>
+          <p><strong>Purpose:</strong> full product information and confident conversion.</p>
+          <ul>
+            <li>Main product image and thumbnail gallery</li>
+            <li>Product title, price, short description, long description</li>
+            <li>Variant selector for size, bundle, or version</li>
+            <li>Quantity stepper</li>
+            <li>Add-to-cart button</li>
+            <li>Stock status</li>
+            <li>Benefits section: use case, texture match, hair benefit</li>
+            <li>Related products section</li>
+          </ul>
+          <p class="status-ok">Required on day one</p>
+        </article>
+
+        <article class="card">
+          <h3>4.3 Cart page or cart drawer</h3>
+          <p><strong>Purpose:</strong> let users review and update order before payment.</p>
+          <ul>
+            <li>List all cart items</li>
+            <li>Show image, title, selected variant, single price, quantity, total</li>
+            <li>Increase or decrease quantity</li>
+            <li>Remove item</li>
+            <li>Subtotal display</li>
+            <li>Checkout button</li>
+            <li>Continue shopping button</li>
+          </ul>
+          <p class="status-ok">Required on day one</p>
+        </article>
+
+        <article class="card">
+          <h3>4.4 Checkout page</h3>
+          <p><strong>Purpose:</strong> collect order info and handle payment.</p>
+          <ul>
+            <li>Customer name</li>
+            <li>Email</li>
+            <li>Phone number</li>
+            <li>Address</li>
+            <li>City / state</li>
+            <li>Delivery note or pickup note</li>
+            <li>Order summary card</li>
+            <li>Paystack pay button</li>
+            <li>Validation before payment</li>
+          </ul>
+          <p class="status-ok">Required on day one</p>
+        </article>
+
+        <article class="card">
+          <h3>4.5 Order success page</h3>
+          <p><strong>Purpose:</strong> confirm payment and complete the flow.</p>
+          <ul>
+            <li>Thank-you message</li>
+            <li>Order reference</li>
+            <li>Product summary</li>
+            <li>Delivery expectation message</li>
+            <li>Continue shopping button</li>
+          </ul>
+          <p class="status-ok">Required on day one</p>
+        </article>
+
+        <article class="card">
+          <h3>4.6 Optional next layer</h3>
+          <p><strong>Purpose:</strong> improve experience after base ecommerce works.</p>
+          <ul>
+            <li>Wishlist</li>
+            <li>Promo code support</li>
+            <li>Customer reviews</li>
+            <li>Inventory warnings</li>
+            <li>Bundle products</li>
+            <li>Upsell on cart and checkout</li>
+          </ul>
+          <p class="status-warn">Build after core flow is stable</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="structure" class="stack">
+      <h2>5. Recommended file structure</h2>
+      <p>This keeps the ecommerce part organized and easy to debug.</p>
+      <code>pages/
+├── shop.html
+├── product.html
+├── cart.html
+├── checkout.html
+└── order-success.html
+
+js/
+├── products-data.js       // all product objects
+├── shop.js                // render product grid, filters, sort, search
+├── product.js             // single product page logic
+├── cart.js                // cart helpers and shared logic
+├── cart-page.js           // cart page rendering
+├── checkout.js            // checkout form + payment logic
+└── order-success.js       // success page summary state
+
+css/
+├── shop.css
+├── product.css
+├── cart-page.css
+├── checkout.css
+└── order-success.css
+
+assets/images/shop/
+├── product-1.webp
+├── product-2.webp
+├── product-3.webp
+└── ...</code>
+    </section>
+
+    <section id="data" class="card">
+      <h2>6. Data model plan</h2>
+      <p>All pages should use one product data source so the store stays consistent.</p>
+      <div class="grid two">
+        <div class="deliverable">
+          <h3>Product object fields</h3>
+          <ul>
+            <li>id</li>
+            <li>slug</li>
+            <li>name</li>
+            <li>category</li>
+            <li>price</li>
+            <li>oldPrice</li>
+            <li>badge</li>
+            <li>description</li>
+            <li>longDescription</li>
+            <li>image</li>
+            <li>gallery</li>
+            <li>stock</li>
+            <li>featured</li>
+            <li>variants</li>
+          </ul>
+        </div>
+        <div class="deliverable">
+          <h3>Cart item fields</h3>
+          <ul>
+            <li>id</li>
+            <li>slug</li>
+            <li>name</li>
+            <li>price</li>
+            <li>image</li>
+            <li>variant</li>
+            <li>quantity</li>
+          </ul>
+        </div>
+      </div>
+      <div class="note">
+        <h3>Important rule</h3>
+        <p>Do not hardcode separate versions of the same product across shop, product, and cart pages. One source of truth should feed everything.</p>
+      </div>
+    </section>
+
+    <section id="phases">
+      <h2>7. Build phases</h2>
+
+      <article class="phase">
+        <div class="phase-number">1</div>
+        <h3>Foundation</h3>
+        <ul>
+          <li>Create product data file</li>
+          <li>Decide store categories</li>
+          <li>Prepare all product images</li>
+          <li>Create shared cart helper functions</li>
+          <li>Set up localStorage cart key</li>
+        </ul>
+      </article>
+
+      <article class="phase">
+        <div class="phase-number">2</div>
+        <h3>Shop page completion</h3>
+        <ul>
+          <li>Render product cards from JavaScript data</li>
+          <li>Add category filters</li>
+          <li>Add search</li>
+          <li>Add sorting</li>
+          <li>Connect add-to-cart button</li>
+          <li>Show cart count in navbar or shop header</li>
+        </ul>
+      </article>
+
+      <article class="phase">
+        <div class="phase-number">3</div>
+        <h3>Product page completion</h3>
+        <ul>
+          <li>Use product slug or query string to load correct product</li>
+          <li>Render gallery and details dynamically</li>
+          <li>Handle variants and quantity</li>
+          <li>Connect add-to-cart from product page</li>
+          <li>Show related products</li>
+        </ul>
+      </article>
+
+      <article class="phase">
+        <div class="phase-number">4</div>
+        <h3>Cart system</h3>
+        <ul>
+          <li>Create cart page or drawer</li>
+          <li>Render line items from localStorage</li>
+          <li>Update quantities</li>
+          <li>Remove products</li>
+          <li>Calculate subtotal in real time</li>
+        </ul>
+      </article>
+
+      <article class="phase">
+        <div class="phase-number">5</div>
+        <h3>Checkout system</h3>
+        <ul>
+          <li>Create validated checkout form</li>
+          <li>Render final order summary</li>
+          <li>Connect Paystack</li>
+          <li>Store temporary order data before redirect</li>
+          <li>Handle success callback cleanly</li>
+        </ul>
+      </article>
+
+      <article class="phase">
+        <div class="phase-number">6</div>
+        <h3>Success and polish</h3>
+        <ul>
+          <li>Create order-success page</li>
+          <li>Show confirmation details</li>
+          <li>Clear cart after successful payment</li>
+          <li>Add premium empty states and error states</li>
+          <li>Test mobile responsiveness on all store pages</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="grid two">
+      <article class="card">
+        <h2>8. Core implementation rules</h2>
+        <ul>
+          <li>Build the full buying flow before adding fancy extras</li>
+          <li>Make product rendering dynamic, not manually repeated in HTML</li>
+          <li>Keep cart state shared across all ecommerce pages</li>
+          <li>Keep styling premium and consistent with the salon brand</li>
+          <li>Test every action on mobile first</li>
+        </ul>
+      </article>
+
+      <article class="card">
+        <h2>9. What to avoid</h2>
+        <ul>
+          <li>Do not build only the shop grid without a real cart system</li>
+          <li>Do not hardcode product content on multiple pages separately</li>
+          <li>Do not connect payment before checkout validation works</li>
+          <li>Do not add wishlist, coupons, or reviews before core flow is done</li>
+        </ul>
+      </article>
+    </section>
+
+    <section id="deliverables" class="card">
+      <h2>10. Definition of done</h2>
+      <p>The ecommerce side can be called complete when all of these are true:</p>
+      <ul>
+        <li>Shop page renders products dynamically</li>
+        <li>User can filter, search, and sort products</li>
+        <li>User can open a proper product details page</li>
+        <li>User can add products to cart from both shop and product page</li>
+        <li>Cart updates quantity and subtotal correctly</li>
+        <li>Checkout collects valid customer data</li>
+        <li>Paystack opens with the right amount</li>
+        <li>Order success page works and clears cart</li>
+        <li>The full flow works on mobile and desktop</li>
+      </ul>
+    </section>
+
+    <p class="footer">Velour ecommerce roadmap · generated as an implementation-ready HTML document</p>
+  </main>
+</body>
+</html>

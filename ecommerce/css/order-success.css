@@ -1,0 +1,322 @@
+/* ═══════════════════════════════════════════════════════════════
+   VELOUR HAIR STUDIO — Order Success Page Styles (Phase 5)
+   Confirmation page shown after successful Paystack payment
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────────────────────────────────
+   1. PAGE LAYOUT
+   ────────────────────────────────────────────────────────────────── */
+.order-success-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 80px 24px 100px;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   2. SUCCESS HERO
+   ────────────────────────────────────────────────────────────────── */
+.order-success-hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Animated checkmark */
+.order-success-check {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 24px;
+  color: var(--vl-gold);
+}
+
+.order-success-check svg {
+  width: 100%;
+  height: 100%;
+}
+
+.order-success-check__circle {
+  stroke-dasharray: 152;
+  stroke-dashoffset: 152;
+  animation: drawCircle 0.6s ease 0.2s forwards;
+}
+
+.order-success-check__tick {
+  stroke-dasharray: 36;
+  stroke-dashoffset: 36;
+  animation: drawTick 0.4s ease 0.7s forwards;
+}
+
+@keyframes drawCircle {
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes drawTick {
+  to { stroke-dashoffset: 0; }
+}
+
+.order-success-hero__title {
+  font-family: 'Fraunces', serif;
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 300;
+  color: var(--ec-text-primary);
+  margin-bottom: 8px;
+  opacity: 0;
+  animation: successFadeUp 0.5s ease 0.9s forwards;
+}
+
+.order-success-hero__subtitle {
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: var(--ec-text-secondary);
+  opacity: 0;
+  animation: successFadeUp 0.5s ease 1.05s forwards;
+}
+
+@keyframes successFadeUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   3. ORDER DETAILS CARD
+   ────────────────────────────────────────────────────────────────── */
+.order-details-card {
+  background: var(--ec-surface);
+  border: 0.5px solid var(--ec-card-border);
+  border-radius: var(--ec-radius-lg);
+  padding: var(--ec-space-lg);
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: successFadeUp 0.5s ease 1.2s forwards;
+}
+
+/* Top accent */
+.order-details-card::before {
+  content: '';
+  display: block;
+  height: 2px;
+  margin: -24px -24px 20px;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(90deg, var(--ec-success), var(--vl-gold), var(--ec-success));
+  opacity: 0.6;
+}
+
+.order-details-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: var(--ec-space-md);
+  border-bottom: 0.5px solid var(--ec-divider);
+  margin-bottom: var(--ec-space-md);
+}
+
+.order-details-card__label {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--ec-text-muted);
+  margin-bottom: 4px;
+}
+
+.order-details-card__ref {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--vl-gold);
+  letter-spacing: 0.5px;
+}
+
+.order-details-card__date {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-secondary);
+}
+
+/* Sections */
+.order-details-card__section {
+  padding: var(--ec-space-md) 0;
+  border-bottom: 0.5px solid var(--ec-divider);
+}
+
+.order-details-card__section-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--vl-gold);
+  margin-bottom: 12px;
+}
+
+.order-details-card__text {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-secondary);
+  line-height: 1.6;
+}
+
+/* Items list */
+.order-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-item__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.order-item__name {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.order-item__meta {
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  color: var(--ec-text-muted);
+  margin-top: 2px;
+}
+
+.order-item__price {
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ec-text-primary);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Totals */
+.order-details-card__totals {
+  padding-top: var(--ec-space-md);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-details-card__row {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  color: var(--ec-text-secondary);
+}
+
+.order-details-card__row span:last-child {
+  font-weight: 500;
+  color: var(--ec-text-primary);
+}
+
+.order-details-card__row--total {
+  border-top: 0.5px solid var(--ec-divider-strong);
+  padding-top: 12px;
+  margin-top: 4px;
+}
+
+.order-details-card__row--total span:first-child {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ec-text-primary);
+}
+
+.order-details-card__row--total span:last-child {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--vl-gold);
+}
+
+/* Footer email note */
+.order-details-card__footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: var(--ec-space-md);
+  padding: 14px 16px;
+  background: rgba(201, 169, 110, 0.05);
+  border-radius: 12px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 13px;
+  color: var(--ec-text-secondary);
+  line-height: 1.5;
+}
+
+.order-details-card__footer svg {
+  width: 20px;
+  height: 20px;
+  color: var(--vl-gold);
+  flex-shrink: 0;
+}
+
+.order-details-card__footer strong {
+  color: var(--ec-text-primary);
+  font-weight: 600;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   4. ACTIONS
+   ────────────────────────────────────────────────────────────────── */
+.order-success-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  animation: successFadeUp 0.5s ease 1.4s forwards;
+}
+
+.order-success-actions .ec-btn {
+  min-width: 220px;
+  justify-content: center;
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   5. RESPONSIVE
+   ────────────────────────────────────────────────────────────────── */
+@media (max-width: 560px) {
+  .order-success-page {
+    padding: 24px 16px 80px;
+  }
+
+  .order-details-card {
+    padding: 20px 16px;
+  }
+
+  .order-details-card__header {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .order-details-card__header > div:last-child {
+    text-align: left;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────────────
+   6. REDUCED MOTION
+   ────────────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  .order-success-check__circle,
+  .order-success-check__tick,
+  .order-success-hero__title,
+  .order-success-hero__subtitle,
+  .order-details-card,
+  .order-success-actions {
+    animation: none !important;
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+  }
+}

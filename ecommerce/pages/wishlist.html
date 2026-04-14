@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Favorites — Velour Hair Studio</title>
+
+  <!-- Primary Meta -->
+  <meta name="description" content="View your saved favorite products from Velour Hair Studio. Move items to your cart or continue browsing." />
+  <meta name="robots" content="noindex" />
+  <meta name="author" content="Velour Hair Studio" />
+  <meta name="theme-color" content="#6B3F5E" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/svg+xml" href="/assets/icons/favicon.svg" />
+  <link rel="icon" type="image/x-icon" href="/assets/icons/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/css/output.css" />
+  <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="/ecommerce/css/ecommerce-variables.css" />
+  <link rel="stylesheet" href="/ecommerce/css/wishlist.css" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="min-h-screen bg-cream dark:bg-dark-bg text-ink dark:text-cream antialiased font-outfit light-hero-page">
+
+  <!-- Navbar Placeholder -->
+  <div id="navbar-placeholder"></div>
+  <script src="/js/navbar.js"></script>
+
+  <main>
+
+    <!-- Loading Skeleton -->
+    <div class="wishlist-wrap" id="wishlist-skeleton" aria-hidden="true">
+      <div style="text-align:center;margin-bottom:40px;">
+        <div class="ec-skeleton" style="height:14px;width:120px;margin:0 auto 14px;border-radius:6px;"></div>
+        <div class="ec-skeleton" style="height:36px;width:280px;margin:0 auto 10px;border-radius:8px;"></div>
+        <div class="ec-skeleton" style="height:14px;width:100px;margin:0 auto;border-radius:6px;"></div>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:1200px;margin:0 auto;">
+        <div class="ec-skeleton" style="aspect-ratio:3/4;border-radius:20px;"></div>
+        <div class="ec-skeleton" style="aspect-ratio:3/4;border-radius:20px;"></div>
+        <div class="ec-skeleton" style="aspect-ratio:3/4;border-radius:20px;"></div>
+        <div class="ec-skeleton" style="aspect-ratio:3/4;border-radius:20px;"></div>
+      </div>
+    </div>
+
+    <!-- Empty State -->
+    <div class="wishlist-wrap" id="wishlist-empty" style="display:none;">
+      <div class="wishlist-empty">
+        <div class="wishlist-empty__icon">
+          <svg viewBox="0 0 24 24">
+            <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/>
+          </svg>
+        </div>
+        <h1 class="wishlist-empty__title">You haven't saved any items yet</h1>
+        <p class="wishlist-empty__text">
+          Browse our shop and tap the heart icon on any product to save it here for later.
+        </p>
+        <div class="wishlist-empty__actions">
+          <a href="/ecommerce/pages/shop.html" class="ec-btn ec-btn--primary">Browse the Shop</a>
+          <a href="/pages/booking.html" class="ec-btn ec-btn--outline">Book a Consultation</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Wishlist Content -->
+    <div class="wishlist-wrap" id="wishlist-content" style="display:none;">
+
+      <!-- Header -->
+      <div class="wishlist-header">
+        <p class="wishlist-header__eyebrow">Your Collection</p>
+        <h1 class="wishlist-header__title">Your <em>Favorites</em></h1>
+        <p class="wishlist-header__count" id="wishlist-item-count"></p>
+      </div>
+
+      <!-- Product Grid -->
+      <div class="wishlist-grid" id="wishlist-grid" role="list"></div>
+
+      <!-- Footer CTA -->
+      <div class="wishlist-footer-cta">
+        <p class="wishlist-footer-cta__text">
+          Looking for more?
+          <a href="/ecommerce/pages/shop.html" class="wishlist-footer-cta__link">Continue Shopping →</a>
+        </p>
+      </div>
+
+    </div><!-- /wishlist-content -->
+
+  </main>
+
+  <!-- Footer -->
+  <div id="footer-placeholder"></div>
+
+  <!-- Scripts -->
+  <script src="/ecommerce/js/products-data.js"></script>
+  <script src="/ecommerce/js/cart.js"></script>
+  <script src="/ecommerce/js/wishlist.js"></script>
+  <script src="/js/main.js" defer></script>
+  <script src="/ecommerce/js/wishlist-page.js" defer></script>
+</body>
+
+</html>

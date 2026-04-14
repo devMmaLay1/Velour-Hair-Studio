@@ -1,25 +1,24 @@
 <!-- ═══════════════════════════════════════════════════════════════
-     VELOUR HAIR STUDIO — Premium Navbar
-     ═══════════════════════════════════════════════════════════════ -->
+VELOUR HAIR STUDIO — Navbar Component
+File: components/navbar.html
+═══════════════════════════════════════════════════════════════ -->
+
+<!-- FIXED HEADER -->
 <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500">
-  <!-- Top accent bar -->
+  <!-- Top gold accent line -->
   <div class="h-[1px] bg-gradient-to-r from-transparent via-gold/60 to-transparent"></div>
 
+  <!-- Main nav row -->
   <nav class="max-w-7xl mx-auto flex items-center justify-between px-6 lg:px-8 py-4">
-    <!-- Logo -->
+    <!-- ── LOGO ── -->
     <a href="/index.html" class="group relative flex items-center gap-3">
-      <span class="font-fraunces text-2xl tracking-[0.04em] text-plum dark:text-cream transition-colors duration-300">
-        Velour
-      </span>
+      <span class="font-fraunces text-2xl tracking-[0.04em] bg-gradient-to-r from-cream via-gold to-cream bg-clip-text text-transparent dark:from-cream dark:via-gold dark:to-cream transition-all duration-300" style="text-shadow: 0 0 20px rgba(201,169,110,0.3);">Velour</span>
       <span class="hidden sm:block w-[1px] h-5 bg-gold/40"></span>
-      <span class="hidden sm:block text-[10px] uppercase tracking-[0.25em] text-ink/50 dark:text-cream/50 font-outfit font-medium">
-        Hair Studio
-      </span>
-      <!-- Hover underline -->
+      <span class="hidden sm:block text-[10px] uppercase tracking-[0.25em] text-ink/40 dark:text-cream/40 font-outfit font-medium">Hair Studio</span>
       <span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-gold group-hover:w-full transition-all duration-500"></span>
     </a>
 
-    <!-- Desktop Navigation -->
+    <!-- ── DESKTOP NAV LINKS ── -->
     <div class="hidden lg:flex items-center gap-1">
       <a href="/index.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
         Home
@@ -37,7 +36,7 @@
         Gallery
         <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold group-hover:w-3/4 transition-all duration-300"></span>
       </a>
-      <a href="/pages/shop.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
+      <a href="/ecommerce/pages/shop.html" class="nav-link group relative px-4 py-2 text-[13px] uppercase tracking-[0.15em] font-outfit font-medium text-ink/70 dark:text-cream/70 hover:text-plum dark:hover:text-gold transition-colors duration-300">
         Shop
         <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-[1.5px] bg-gold group-hover:w-3/4 transition-all duration-300"></span>
       </a>
@@ -51,27 +50,59 @@
       </a>
     </div>
 
-    <!-- Right side actions -->
-    <div class="flex items-center gap-3">
-      <!-- Book Now CTA (desktop) -->
-      <a
-        href="/pages/booking.html"
-        class="hidden lg:inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-[#d4b87a] text-ink px-7 py-2.5 text-[12px] uppercase tracking-[0.18em] font-outfit font-semibold shadow-[0_2px_12px_rgba(201,169,110,0.25)] hover:shadow-[0_4px_20px_rgba(201,169,110,0.4)] hover:-translate-y-[1px] transition-all duration-300"
-      >
+    <!-- ── RIGHT SIDE ACTIONS ── -->
+    <div class="flex items-center gap-2">
+
+      <!-- ── Wishlist icon (desktop + mobile) ── -->
+      <a href="/ecommerce/pages/wishlist.html"
+         id="nav-wishlist-btn"
+         aria-label="Your wishlist"
+         class="relative w-10 h-10 rounded-full border border-rose/30 dark:border-cream/20 flex items-center justify-center text-ink/80 dark:text-cream/80 hover:border-gold hover:text-gold transition-all duration-300">
+        <!-- Lucide Heart Icon - Matched stroke weight -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/>
+        </svg>
+        <!-- Count Badge — fixed 20px circle, anchored top-right -->
+        <span id="nav-wishlist-count"
+              class="absolute top-0 right-0 rounded-full text-[10px] font-bold font-outfit flex items-center justify-center pointer-events-none transition-all duration-300 shadow-[0_1px_4px_rgba(0,0,0,0.35)] leading-none"
+              style="width: 20px; height: 20px; min-width: 20px; background: #c8a85a; color: #000000; transform: translate(50%, -50%) scale(0); opacity: 0;"
+              aria-label="wishlist count">0</span>
+      </a>
+
+      <!-- ── Cart icon (desktop + mobile) ── -->
+      <a href="/ecommerce/pages/cart.html"
+         id="nav-cart-btn"
+         aria-label="Your cart"
+         class="relative w-10 h-10 rounded-full border border-rose/30 dark:border-cream/20 flex items-center justify-center text-ink/80 dark:text-cream/80 hover:border-gold hover:text-gold transition-all duration-300">
+        <!-- Clean minimal shopping bag — body + handle arc only -->
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <!-- Bag body -->
+          <path d="M6 7h12l-1.5 11a1 1 0 0 1-1 .9H8.5a1 1 0 0 1-1-.9L6 7z"/>
+          <!-- Handle arc -->
+          <path d="M9 7a3 3 0 0 1 6 0"/>
+        </svg>
+        <!-- Count Badge — fixed 20px circle, anchored top-right -->
+        <span id="nav-cart-count"
+              class="absolute top-0 right-0 rounded-full text-[10px] font-bold font-outfit flex items-center justify-center pointer-events-none transition-all duration-300 shadow-[0_1px_4px_rgba(0,0,0,0.35)] leading-none"
+              style="width: 20px; height: 20px; min-width: 20px; background: #c8a85a; color: #000000; transform: translate(50%, -50%) scale(0); opacity: 0;"
+              aria-label="cart count">0</span>
+      </a>
+
+      <!-- Book Now — desktop only -->
+      <a href="/pages/booking.html"
+         class="hidden lg:inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-[#d4b87a] text-ink px-7 py-2.5 text-[12px] uppercase tracking-[0.18em] font-outfit font-semibold shadow-[0_2px_12px_rgba(201,169,110,0.25)] hover:shadow-[0_4px_20px_rgba(201,169,110,0.4)] hover:-translate-y-[1px] transition-all duration-300">
         Book Now
       </a>
 
-      <!-- Mobile menu button -->
-      <button
-        type="button"
-        id="mobile-menu-btn"
-        class="lg:hidden relative w-10 h-10 rounded-full border border-rose/30 dark:border-cream/20 flex items-center justify-center text-ink/80 dark:text-cream/80 hover:border-gold transition-all duration-300"
-        aria-label="Open navigation menu"
-      >
-        <div class="flex flex-col items-center justify-center gap-[5px]" id="hamburger-icon">
-          <span class="block w-5 h-[1.5px] bg-current transition-all duration-300 origin-center" id="bar-1"></span>
-          <span class="block w-3.5 h-[1.5px] bg-current transition-all duration-300 ml-auto" id="bar-2"></span>
-          <span class="block w-5 h-[1.5px] bg-current transition-all duration-300 origin-center" id="bar-3"></span>
+      <!-- Hamburger — mobile only -->
+      <button type="button"
+              id="mobile-menu-btn"
+              aria-label="Open navigation menu"
+              class="lg:hidden relative w-10 h-10 rounded-full border border-rose/30 dark:border-cream/20 flex items-center justify-center text-ink/80 dark:text-cream/80 hover:border-gold transition-all duration-300">
+        <div id="hamburger-icon" class="flex flex-col items-center justify-center gap-[5px]">
+          <span id="bar-1" class="block w-5 h-[1.5px] bg-current transition-all duration-300 origin-center"></span>
+          <span id="bar-2" class="block w-3.5 h-[1.5px] bg-current transition-all duration-300 ml-auto"></span>
+          <span id="bar-3" class="block w-5 h-[1.5px] bg-current transition-all duration-300 origin-center"></span>
         </div>
       </button>
     </div>
@@ -79,62 +110,155 @@
 </header>
 
 <!-- ═══════════════════════════════════════════════════════════════
-     Mobile Full-Screen Nav Overlay
-     ═══════════════════════════════════════════════════════════════ -->
+MOBILE MENU OVERLAY
+
+IMPORTANT: All 9 mobile-nav-link elements must stay inside
+the single parent div#mobile-links-container. Do NOT split
+them across multiple divs or add closing tags between links.
+═══════════════════════════════════════════════════════════════ -->
+
 <div id="mobile-menu" class="fixed inset-0 z-[45] pointer-events-none opacity-0 transition-opacity duration-500">
-  <!-- Backdrop -->
+  <!-- Blurred backdrop -->
   <div class="absolute inset-0 bg-cream/95 dark:bg-dark-bg/95 backdrop-blur-xl"></div>
 
-  <!-- Content -->
-  <div class="relative h-full flex flex-col items-center justify-center gap-6 px-8">
-    <!-- Decorative line -->
-    <div class="absolute top-24 left-1/2 -translate-x-1/2 w-8 h-[1px] bg-gold/50"></div>
+  <!-- Scroll wrapper — allows scroll on very small screens -->
+  <div class="relative h-full w-full overflow-y-auto overflow-x-hidden">
+    <!-- CRITICAL STRUCTURE NOTE:
+         id="mobile-links-container" opens here ↓
+         and closes only AFTER Book Appointment ↓
+         Never put a closing div between the nav links.
+    -->
+    <div id="mobile-links-container"
+         class="min-h-full flex flex-col items-center justify-center gap-6 px-6 py-24 w-full">
 
-    <a href="/index.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Home</a>
-    <a href="/pages/services.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Services</a>
-    <a href="/pages/about.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">About</a>
-    <a href="/pages/gallery.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Gallery</a>
-    <a href="/pages/shop.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Shop</a>
-    <a href="/pages/branches.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Branches</a>
-    <a href="/pages/blog.html" class="mobile-nav-link text-2xl font-fraunces text-plum dark:text-cream hover:text-gold transition-colors duration-300 translate-y-4 opacity-0">Blog</a>
+      <!-- Top decorative line -->
+      <div class="w-8 h-[1px] bg-gold/50"></div>
 
-    <!-- Decorative line -->
-    <div class="w-8 h-[1px] bg-gold/50 my-2"></div>
+      <!-- NAV LINK 1 -->
+      <a href="/index.html"
+         class="mobile-nav-link font-fraunces text-2xl text-plum dark:text-cream hover:text-gold transition-colors duration-300"
+         style="opacity:0; transform:translateY(16px);">
+        Home
+      </a>
 
-    <!-- Mobile Book CTA -->
-    <a
-      href="/pages/booking.html"
-      class="mobile-nav-link inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-[#d4b87a] text-ink px-10 py-3 text-[13px] uppercase tracking-[0.18em] font-outfit font-semibold shadow-[0_2px_12px_rgba(201,169,110,0.25)] translate-y-4 opacity-0"
-    >
-      Book Appointment
-    </a>
-  </div>
-</div>
+      <!-- NAV LINK 2 -->
+      <a href="/pages/services.html"
+         class="mobile-nav-link font-fraunces text-2xl text-plum dark:text-cream hover:text-gold transition-colors duration-300"
+         style="opacity:0; transform:translateY(16px);">
+        Services
+      </a>
 
-<!-- Spacer to offset fixed navbar -->
-<div class="h-[73px]" id="navbar-spacer"></div>
+      <!-- NAV LINK 3 -->
+      <a href="/pages/about.html"
+         class="mobile-nav-link font-fraunces text-2xl text-plum dark:text-cream hover:text-gold transition-colors duration-300"
+         style="opacity:0; transform:translateY(16px);">
+        About
+      </a>
 
-<!-- ── Global Cart Drawer ── -->
-<div class="sp-cart-overlay" id="sp-cart-overlay" aria-hidden="true"></div>
-<aside class="sp-cart" id="sp-cart" role="dialog" aria-label="Shopping cart" aria-modal="true" hidden>
-  <div class="sp-cart-header">
-    <div class="sp-cart-header-left">
-      <p class="sp-cart-eyebrow">Velour Studio</p>
-      <h2 class="sp-cart-title">Your Cart</h2>
+      <!-- NAV LINK 4 -->
+      <a href="/pages/gallery.html"
+         class="mobile-nav-link font-fraunces text-2xl text-plum dark:text-cream hover:text-gold transition-colors duration-300"
+         style="opacity:0; transform:translateY(16px);">
+        Gallery
+      </a>
+
+      <!-- NAV LINK 5 -->
+      <a href="/ecommerce/pages/shop.html"
+         class="mobile-nav-link font-fraunces text-2xl text-plum dark:text-cream hover:text-gold transition-colors duration-300"
+         style="opacity:0; transform:translateY(16px);">
+        Shop
+      </a>
+
+      <!-- NAV LINK 6 -->
+      <a href="/pages/branches.html"
+         class="mobile-nav-link font-fraunces text-2xl text-plum dark:text-cream hover:text-gold transition-colors duration-300"
+         style="opacity:0; transform:translateY(16px);">
+        Branches
+      </a>
+
+      <!-- NAV LINK 7 -->
+      <a href="/pages/blog.html"
+         class="mobile-nav-link font-fraunces text-2xl text-plum dark:text-cream hover:text-gold transition-colors duration-300"
+         style="opacity:0; transform:translateY(16px);">
+        Blog
+      </a>
+
+      <!-- Bottom decorative line -->
+      <div class="w-8 h-[1px] bg-gold/50"></div>
+
+      <!-- NAV LINK 8 — Book Appointment CTA -->
+      <a href="/pages/booking.html"
+         class="mobile-nav-link inline-flex items-center justify-center rounded-full bg-gradient-to-r from-gold to-[#d4b87a] text-ink px-10 py-3.5 text-[13px] uppercase tracking-[0.18em] font-outfit font-semibold shadow-[0_2px_12px_rgba(201,169,110,0.25)]"
+         style="opacity:0; transform:translateY(16px);">
+        Book Appointment
+      </a>
+
     </div>
-    <button class="sp-cart-close" id="sp-cart-close" aria-label="Close cart">
-      <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
-    </button>
+    <!-- id="mobile-links-container" closes here ↑ -->
   </div>
-  <div class="sp-cart-body" id="sp-cart-body"></div>
-  <div class="sp-cart-footer" id="sp-cart-footer"></div>
-</aside>
+  <!-- scroll wrapper closes here ↑ -->
+</div>
+<!-- id="mobile-menu" closes here ↑ -->
 
-<!-- ── Cart FAB ── -->
-<button class="sp-cart-fab" id="sp-cart-fab" aria-label="Open cart">
-  <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-  <span class="sp-cart-fab-badge" id="sp-cart-badge" hidden>0</span>
-</button>
+<!-- Navbar height spacer — keeps page content below fixed navbar -->
+<div id="navbar-spacer" class="h-[73px]"></div>
 
-<!-- ── Toast ── -->
-<div class="sp-toast" id="sp-toast" role="status" aria-live="polite" hidden></div>
+<!-- Lucide Icons CDN -->
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+<script>
+/* ── Lucide: render icons inside the navbar ── */
+(function tryLucide() {
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  } else {
+    /* CDN not ready yet — wait a tick */
+    setTimeout(tryLucide, 50);
+  }
+})();
+
+/* ── Navbar: Live cart + wishlist badge updater ── */
+(function () {
+  function getCount(key) {
+    try {
+      var data = JSON.parse(localStorage.getItem(key) || '[]');
+      if (Array.isArray(data)) {
+        /* cart stores [{qty:n,...}] — sum quantities */
+        if (key === 'velour_cart') {
+          return data.reduce(function (sum, item) { return sum + (item.qty || item.quantity || 1); }, 0);
+        }
+        return data.length;
+      }
+    } catch (e) {}
+    return 0;
+  }
+
+  function setBadge(ids, count) {
+    ids.forEach(function (id) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      if (count > 0) {
+        el.textContent = count > 99 ? '99+' : count;
+        el.style.opacity = '1';
+        el.style.transform = 'translate(50%, -50%) scale(1)';
+      } else {
+        el.style.opacity = '0';
+        el.style.transform = 'translate(50%, -50%) scale(0)';
+      }
+    });
+  }
+
+  function updateBadges() {
+    setBadge(['nav-cart-count', 'mobile-cart-count'], getCount('velour_cart'));
+    setBadge(['nav-wishlist-count', 'mobile-wishlist-count'], getCount('velour_wishlist'));
+  }
+
+  /* Run on load and whenever localStorage changes (cross-tab) */
+  updateBadges();
+  window.addEventListener('storage', updateBadges);
+
+  /* Also listen for a custom event fired by cart/wishlist JS on the same tab */
+  window.addEventListener('velour:cart:updated', updateBadges);
+  window.addEventListener('velour:wishlist:updated', updateBadges);
+})();
+</script>

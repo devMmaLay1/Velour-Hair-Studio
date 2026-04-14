@@ -41,13 +41,17 @@
   <link rel="manifest" href="/site.webmanifest" />
   <link rel="stylesheet" href="/css/output.css" />
   <link rel="stylesheet" href="/css/custom.css" />
+  <link rel="stylesheet" href="/css/cart.css" />
   <link rel="stylesheet" href="/css/contact.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;1,300&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 <body class="min-h-screen bg-cream dark:bg-dark-bg text-ink dark:text-cream antialiased font-outfit light-hero-page">
+  <!-- Navbar Placeholder -->
   <div id="navbar-placeholder"></div>
+  <script src="/js/navbar.js"></script>
+
   <main>
 
     <!-- ── Hero ── -->
@@ -276,30 +280,8 @@
 
   </main>
   <div id="footer-placeholder"></div>
-  <script src="/js/products-data.js" defer></script>
   <script src="/js/cart.js" defer></script>
   <script src="/js/main.js" defer></script>
   <script src="/js/contact.js" defer></script>
-
-  <!-- Global Cart -->
-  <div class="sp-cart-overlay" id="sp-cart-overlay"></div>
-  <aside class="sp-cart" id="sp-cart" hidden>
-    <div class="sp-cart-header">
-      <div class="sp-cart-header-left">
-        <p class="sp-cart-eyebrow">Velour Studio</p>
-        <h2 class="sp-cart-title">Your Cart</h2>
-      </div>
-      <button class="sp-cart-close" id="sp-cart-close" aria-label="Close cart">
-        <svg viewBox="0 0 16 16" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l10 10M13 3L3 13"/></svg>
-      </button>
-    </div>
-    <div class="sp-cart-body" id="sp-cart-body"></div>
-    <div class="sp-cart-footer" id="sp-cart-footer"></div>
-  </aside>
-  <button class="sp-cart-fab" id="sp-cart-fab" aria-label="Open cart">
-    <svg viewBox="0 0 24 24" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
-    <span class="sp-cart-fab-badge" id="sp-cart-badge" hidden>0</span>
-  </button>
-  <div class="sp-toast" id="sp-toast" role="status" aria-live="polite" hidden></div>
 </body>
 </html>
